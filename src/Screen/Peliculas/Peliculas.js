@@ -1,0 +1,7 @@
+import React from "react";
+
+function Peliculas() {
+  return <h1>Peliculas</h1>;
+}
+
+export default Peliculas;
