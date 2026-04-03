@@ -1,7 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 
-function Favoritos() {
-  return <h1>Favoritos</h1>;
+class Favoritos extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      favMovies: [],
+      favSeries: []
+    };
+  }
+render(){
+  return(
+    // NO LO SIGO PORQUE NO VIMOS COOKIES
+  )
 }
-
+  
+  }
 export default Favoritos;
