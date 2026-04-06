@@ -11,9 +11,9 @@ class Series extends Component{
         let url= "";
 
         if(this.props.link === "popularShows"){
-            url= "https://api.themoviedb.org/3/tv/popular";
+            url= "https://api.themoviedb.org/3/tv/popular?api_key=cd21534ccf3ef8b078f7ac273cdf32ca";
         } else if(this.props.link === "nowPlaying"){
-            url = "https://api.themoviedb.org/3/tv/airing_today";
+            url = "https://api.themoviedb.org/3/tv/airing_today?api_key=cd21534ccf3ef8b078f7ac273cdf32ca";
         }
 
         fetch(url)
