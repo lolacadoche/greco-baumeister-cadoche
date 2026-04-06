@@ -14,8 +14,6 @@ function Home() {
         <React.Fragment>
             <div className="container">
 
-                <h1>UdeSA Movies</h1>
-
                 <Buscador />
 
                 <h2 className="alert alert-primary">Popular movies this week</h2>

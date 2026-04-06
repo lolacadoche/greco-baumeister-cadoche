@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Movie from "../Movie/Movie";
 
 class Movies extends Component{
     constructor(props){
@@ -30,7 +31,13 @@ class Movies extends Component{
     render(){
         return(
             <div className="row">
-                
+                <section className="">
+                     {this.state.peliculas ? (
+                        this.state.peliculas.map((pelicula, index) => (
+                           <Movie key={index} titulo={pelicula.title} />
+                        ))
+                    ) : (<h3>Cargando...</h3>)}
+                </section>
             </div>
         )
     }
