@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Movie from "../Movie/Movie";
 
 class Movies extends Component {
     constructor(props) {
@@ -31,7 +32,6 @@ class Movies extends Component {
     render() {
         return (
             <div className="row">
-
             </div>
         )
     }
