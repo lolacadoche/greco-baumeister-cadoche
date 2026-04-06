@@ -7,8 +7,11 @@ function Series() {
     <React.Fragment>
       <h1>Todas las Series</h1>
       <Buscador />
-      <CargarMas tipo="TV"/>
+      <CargarMas tipo="TV" />
 
+      <section>
+
+      </section>
 
     </React.Fragment>
   )
