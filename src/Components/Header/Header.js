@@ -6,7 +6,7 @@ function Header (props) {
     return (
         <nav>
             <ul>
-                <li> <Link to="/">Homw</Link> </li>
+                <li> <Link to="/">Home</Link> </li>
                 <li> <Link to="">Peliculas</Link> </li>
                 <li> <Link to="">Series</Link> </li>
                 <li> <Link to="">Favoritas</Link> </li>
