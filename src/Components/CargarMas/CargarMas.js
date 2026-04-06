@@ -17,7 +17,7 @@ class CargarMas extends Component {
         fetch(`https://api.themoviedb.org/3/discover/${this.props.tipo}?api_key=TU_API_KEY&page=${page}`)
             .then(res => res.json())
             .then(data =>
-                this.setState({
+                this.setState({ 
                     resultados: page === 1 ? data.results : this.state.resultados.concat(data.results),
                     page: page
                 })
