@@ -5,12 +5,20 @@ class CargarMas extends Component {
         super(props);
         this.state = {
             resultados: [],
-            page: 1
+            page: false
         };
     }
 
     componentDidMount() {
-        this.fetchData(1);
+        fetch(`https://api.themoviedb.org/3/discover/${this.props.tipo}?api_key=TU_API_KEY&page=1`)
+            .then(res => res.json())
+            .then(data => this.setState({
+                resultados: data.results,
+                nextPage: data.page < data.total_pages
+                    ? `https://api.themoviedb.org/3/discover/${this.props.tipo}?api_key=TU_API_KEY&page=${data.page + 1}`
+                    : null
+            }))
+            .catch(error => console.log(error));
     }
 
     fetchData(page) {
@@ -26,9 +34,16 @@ class CargarMas extends Component {
     }
 
     cargarMas = () => {
-        this.fetchData(this.state.page + 1);
+        fetch(this.state.nextPage)
+            .then(res => res.json())
+            .then(data => this.setState({
+                resultados: this.state.resultados.concat(data.results),
+                nextPage: data.page < data.total_pages
+                    ? `https://api.themoviedb.org/3/discover/${this.props.tipo}?api_key=TU_API_KEY&page=${data.page + 1}`
+                    : null
+            }))
+            .catch(error => console.log(error));
     };
-
     render() {
         return (
             <div>
@@ -36,18 +51,22 @@ class CargarMas extends Component {
                     {this.state.resultados.map((item, i) => (
                         <div key={i}>
                             <img
-                                src={`https://image.tmdb.org/t/p/w200${item.poster_path}`} />
+                                src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+                            />
                             <p>{item.title || item.name}</p>
                         </div>
                     ))}
                 </section>
-
-                <button onClick={this.cargarMas}>
-                    Cargar más
-                </button>
+    
+                {this.state.nextPage && (
+                    <button onClick={this.cargarMas}>
+                        Cargar más
+                    </button>
+                )}
             </div>
         );
     }
-}
+};
+
 
 export default CargarMas;
