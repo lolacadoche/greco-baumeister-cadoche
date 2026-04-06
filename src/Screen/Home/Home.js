@@ -22,11 +22,6 @@ function Home() {
                 <h2 className="alert alert-primary">Movies now playing</h2>
                 <Movies link="nowPlaying" />
 
-                <h2 className="alert alert-warning">Popular TV shows this week</h2>
-                <Series link="popularShows" />
-
-                <h2 className="alert alert-warning">TV shows airing today</h2>
-                <Series link="airingShows" />
 
 
             </div>

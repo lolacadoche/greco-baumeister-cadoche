@@ -11,9 +11,9 @@ class Series extends Component{
         let url= "";
 
         if(this.props.link === "popularShows"){
-            url= "https://www.themoviedb.org/tv";
+            url= "https://api.themoviedb.org/3/tv/popular";
         } else if(this.props.link === "nowPlaying"){
-            url = "https://www.themoviedb.org/tv/airing-today";
+            url = "https://api.themoviedb.org/3/tv/airing_today";
         }
 
         fetch(url)

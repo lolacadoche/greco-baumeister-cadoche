@@ -13,9 +13,9 @@ class Movies extends Component {
         let url = "";
 
         if (this.props.link === "popular") {
-            url = "https://www.themoviedb.org/movie";
+            url = "https://api.themoviedb.org/3/movie/popular";
         } else if (this.props.link === "nowPlaying") {
-            url = "https://www.themoviedb.org/movie/now-playing";
+            url = "https://api.themoviedb.org/3/movie/now_playing";
         }
 
         fetch(url)
@@ -32,6 +32,13 @@ class Movies extends Component {
     render() {
         return (
             <div className="row">
+                 <section className="">
+                     {this.state.peliculas ? (
+                        this.state.peliculas.map((peliculas, index) => (
+                           <Movie key={index} titulo={peliculas.title} />
+                        ))
+                    ) : (<h3>Cargando...</h3>)}
+                </section>
             </div>
         )
     }
