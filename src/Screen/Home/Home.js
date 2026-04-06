@@ -1,7 +1,7 @@
 import React from "react";
-import Buscador from "../Components/Buscador/Buscador";
-import Movies from "../Components/Movies/Movies";
-import Series from "../Components/Series/Series";
+import Buscador from "../../Components/Buscador/Buscador";
+import Movies from "../../Components/Movies/Movies";
+import Series from "../../Components/Series/Series";
 
 
 

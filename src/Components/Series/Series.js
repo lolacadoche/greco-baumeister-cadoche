@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Series from "../../Screen/Series/Series";
 
 class Series extends Component{
     constructor(props){

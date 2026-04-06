@@ -8,11 +8,6 @@ class Favoritos extends Component {
       favSeries: []
     };
   }
-render(){
-  return(
-    // NO LO SIGO PORQUE NO VIMOS COOKIES
-  )
-}
   
   }
 export default Favoritos;
