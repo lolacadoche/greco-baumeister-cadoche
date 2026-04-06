@@ -18,16 +18,16 @@ function Home() {
                 <Buscador />
 
                 <h2 className="alert alert-primary">Popular movies this week</h2>
-                <Movies />
+                <Movies link="popular"/>
 
                 <h2 className="alert alert-primary">Movies now playing</h2>
-                <Movies />
+                <Movies link="nowPlaying"/>
 
                 <h2 className="alert alert-warning">Popular TV shows this week</h2>
-                <Series />
+                <Series link="popularShows"/>
 
                 <h2 className="alert alert-warning">TV shows airing today</h2>
-                <Series />
+                <Series link="airingShows"/>
 
 
             </div>
