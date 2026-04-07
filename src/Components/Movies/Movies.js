@@ -13,9 +13,9 @@ class Movies extends Component {
         let url = "";
 
         if (this.props.link === "popular") {
-            url = "https://api.themoviedb.org/3/movie/popular";
+            url = "https://api.themoviedb.org/3/movie/popular?api_key=cd21534ccf3ef8b078f7ac273cdf32ca";
         } else if (this.props.link === "nowPlaying") {
-            url = "https://api.themoviedb.org/3/movie/now_playing";
+            url = "https://api.themoviedb.org/3/movie/now_playing?api_key=cd21534ccf3ef8b078f7ac273cdf32ca";
         }
 
         fetch(url)
@@ -28,6 +28,7 @@ class Movies extends Component {
             .catch(error => console.log(error));
 
     }
+        
 
     render() {
         return (
