@@ -9,13 +9,13 @@ class Movie extends Component {
     render() {
         return (
             <article className='movie-card'>
-                <img src={props.image} alt={props.title} />
+                <img src={this.props.image} alt={this.props.title} />
 
-                <h2>{props.title}</h2>
+                <h2>{this.props.title}</h2>
 
-                <p>{props.overview}</p>
+                <p>{this.props.overview}</p>
 
-                <Link to={`/movie/${props.id}`}>
+                <Link to={`/movie/${this.props.id}`}>
                     <button className='more'>Ver más</button>
                 </Link>
             </article>
