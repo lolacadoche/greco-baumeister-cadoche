@@ -31,21 +31,21 @@ class Buscador extends Component {
 
   render() {
     return (
-      <form onSubmit={(event) => this.evitarSubmit(event)}>
+      <form onSubmit={(event) => this.evitarSubmit(event)} className="search-form">
 
-        <input
+        <input name="searchData"
           type="text"
           placeholder="Buscar..."
           value={this.state.busqueda}
           onChange={(event) => this.controlarCambios(event)}
         />
 
-        <select onChange={(event) => this.cambiarTipo(event)}>
+        {/* <select onChange={(event) => this.cambiarTipo(event)}>
           <option value="movie">Películas</option>
           <option value="tv">Series</option>
-        </select>
+        </select> */}
 
-        <button type="submit">Buscar</button>
+        <button type="submit" className="btn.btn-success.btn-sm">Buscar</button>
 
       </form>
     );

@@ -27,10 +27,10 @@ class Movies extends Component {
     render() {
         return (
             <div className="row">
-                 <section className="">
+                 <section className="row cards all-movies" id="movies">
                      {this.state.peliculas ? (
-                        this.state.peliculas.map((peliculas, index) => (
-                           <Movie key={index} titulo={peliculas.title}  />
+                        this.state.peliculas.map((peliculas) => (
+                           <Movie key={peliculas.id} titulo={peliculas.title} name={peliculas.title} overview={peliculas.overview} image={`https://image.tmdb.org/t/p/w342${peliculas.poster_path}`}  />
                         ))
                     ) : (<h3>Cargando...</h3>)}
                 </section>

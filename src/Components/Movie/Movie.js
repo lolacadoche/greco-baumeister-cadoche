@@ -8,16 +8,18 @@ class Movie extends Component {
 
     render() {
         return (
-            <article className='movie-card'>
-                <img src={this.props.image} alt={this.props.name} />
+            <article className='single-card-movie'>
+                <img src={this.props.image} alt={this.props.name} className="card-img-top"/>
 
-                <h2>{this.props.name}</h2>
+                <div className="cardBody"> 
+                    <h5 className="card-title">{this.props.name}</h5>
 
-                <p>{this.props.overview}</p>
+                    <p className="card-text">{this.props.overview}</p>
 
-                <Link to={`/movie/${this.props.id}`}>
-                    <button className='more'>Ver más</button>
-                </Link>
+                    <Link to={`/Detalle/${this.props.id}`}>
+                        <button className='btn btn-primary'>Ver más</button>
+                    </Link>
+                </div>
             </article>
         )
     }
