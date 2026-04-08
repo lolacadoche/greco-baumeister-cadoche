@@ -8,6 +8,7 @@ class Favoritos extends Component {
       favSeries: []
     };
   }
-
+  
+  
   }
 export default Favoritos;
