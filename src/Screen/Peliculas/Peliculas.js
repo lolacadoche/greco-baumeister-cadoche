@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Buscador from "../../Components/Buscador/Buscador";
-import CargarMas from "../../Components/CargarMas/CargarMas";
 import Movie from "../../Components/Movies/Movies";
 
 class Peliculas extends Component {
@@ -31,7 +30,7 @@ class Peliculas extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.themoviedb.org/3/discover/movie?api_key=TU_API_KEY')
+        fetch('https://api.themoviedb.org/3/discover/movie?api_key=cd21534ccf3ef8b078f7ac273cdf32ca')
             .then(response => response.json())
             .then(data => this.setState({
                 peliculas: data.results,
@@ -42,7 +41,7 @@ class Peliculas extends Component {
     }
 
     cargarMas = () => {
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=TU_API_KEY&page=${this.state.nextPage}`)
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=cd21534ccf3ef8b078f7ac273cdf32ca&page=${this.state.nextPage}`)
             .then(res => res.json())
             .then(data => this.setState({
                 peliculas: this.state.peliculas.concat(data.results),
@@ -81,10 +80,6 @@ class Peliculas extends Component {
                                 id={pelicula.id}
                                 name={pelicula.title}
                                 image={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-                                status={pelicula.release_date}
-                                species={pelicula.vote_average}
-                                origin={pelicula.original_language}
-                                borrar={this.borrarPelicula}
                             />
                         ))
                     ) : (
