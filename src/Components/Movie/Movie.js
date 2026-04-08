@@ -9,9 +9,9 @@ class Movie extends Component {
     render() {
         return (
             <article className='movie-card'>
-                <img src={this.props.image} alt={this.props.title} />
+                <img src={this.props.image} alt={this.props.name} />
 
-                <h2>{this.props.title}</h2>
+                <h2>{this.props.name}</h2>
 
                 <p>{this.props.overview}</p>
 

@@ -30,7 +30,7 @@ class Movies extends Component {
                  <section className="">
                      {this.state.peliculas ? (
                         this.state.peliculas.map((peliculas, index) => (
-                           <Movie key={index} titulo={peliculas.title} />
+                           <Movie key={index} titulo={peliculas.title}  />
                         ))
                     ) : (<h3>Cargando...</h3>)}
                 </section>

@@ -20,7 +20,7 @@ function Home() {
                 <Movies link="popular" />
 
                 <h2 className="alert alert-primary">Popular series this week</h2>
-                <Movies link="nowPlaying" />
+                <Series link="nowPlaying" />
 
 
 
