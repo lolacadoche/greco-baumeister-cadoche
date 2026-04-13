@@ -16,7 +16,7 @@ class Movies extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    peliculas: data.results
+                    peliculas: data.results.slice(0,4)
                 });
             })
             .catch(error => console.log(error));

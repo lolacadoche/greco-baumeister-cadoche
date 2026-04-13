@@ -17,7 +17,7 @@ class Movie extends Component {
                     <p className="card-text">{this.props.overview}</p>
 
                     <Link to={`/DetallePelicula/id/${this.props.id}`}>
-                        <button className='btn btn-primary'>Ver más</button>
+                        <button className='btn btn-primary'>Ver detalle</button>
                     </Link>
                 </div>
             </article>

@@ -16,7 +16,7 @@ class Series extends Component{
             .then(response => response.json())
             .then(data =>{
                 this.setState({
-                    series: data.results
+                    series: data.results.slice(0,4)
                 });
             })
             .catch(error => console.log(error));
