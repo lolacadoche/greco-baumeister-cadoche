@@ -14,7 +14,7 @@ class Serie extends Component {
         
             <p className="card-text">{this.props.overview}</p>
         
-            <Link to={`/Detalle/${this.props.id}`}>
+            <Link to={`/DetalleSerie/${this.props.id}`}>
                 <button className='btn btn-primary'>Ver más</button>
             </Link>
         </article>

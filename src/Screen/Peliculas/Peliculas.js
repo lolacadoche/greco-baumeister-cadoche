@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Buscador from "../../Components/Buscador/Buscador";
 import Movie from "../../Components/Movies/Movies";
 
 class Peliculas extends Component {
