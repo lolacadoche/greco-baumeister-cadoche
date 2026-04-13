@@ -5,16 +5,12 @@ class Buscador extends Component {
     super(props);
     this.state = {
       busqueda: "",
-      tipo: "movie"
     };
   }
 
   evitarSubmit(event) {
     event.preventDefault();
-
-    this.props.history.push( 
-      // NO SE QUE PONER ACA
-    );
+    this.props.history.push(`/search/${ this.state.busqueda}`);
   }
 
   controlarCambios(event) {
@@ -23,11 +19,7 @@ class Buscador extends Component {
     });
   }
 
-  cambiarTipo(event) {
-    this.setState({
-      tipo: event.target.value
-    });
-  }
+
 
   render() {
     return (
@@ -39,11 +31,6 @@ class Buscador extends Component {
           value={this.state.busqueda}
           onChange={(event) => this.controlarCambios(event)}
         />
-
-        {/* <select onChange={(event) => this.cambiarTipo(event)}>
-          <option value="movie">Películas</option>
-          <option value="tv">Series</option>
-        </select> */}
 
         <button type="submit" className="btn.btn-success.btn-sm">Buscar</button>
 
