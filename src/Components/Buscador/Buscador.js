@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {withRouter} from 'react-router-dom'
 
 class Buscador extends Component {
   constructor(props) {
@@ -39,4 +40,4 @@ class Buscador extends Component {
   }
 }
 
-export default Buscador;
+export default withRouter( Buscador)
