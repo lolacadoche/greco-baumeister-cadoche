@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import Detalle from './Screen/Detalle/Detalle';
+import DetallePelicula from './Screen/DetallePelicula/DetallePelicula';
+import DetalleSerie from './Screen/DetalleSerie/DetalleSerie';
 import Favoritos from './Screen/Favoritos/Favoritos';
 import Formulario from './Screen/Formulario/Formulario';
 import Home from './Screen/Home/Home';
@@ -31,7 +32,8 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" exact={true} component={Home} />
-        <Route path="/Detalle" component={Detalle} />
+        <Route path="/DetallePelicula/id/:id" component={DetallePelicula} />
+        <Route path="/DetalleSerie/id/:id" component={DetalleSerie} />
         <Route path="/Favoritos" component={Favoritos} />
         <Route path="/Formulario" component={Formulario} />
         <Route path="/Login" component={Login} />
