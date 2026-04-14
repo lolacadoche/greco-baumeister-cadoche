@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Serie from "../Serie/Serie";
+import { Link } from 'react-router-dom';
+
 
 class Series extends Component{
     constructor(props){
@@ -26,6 +28,9 @@ class Series extends Component{
     render(){
         return(
             <div className="row">
+                <Link to="/series">
+                        <button className="btn btn-primary">Ver todas</button>
+                </Link>
                  <section className="row cards" id="tv-show">
                      {this.state.series ? (
                         this.state.series.map((series) => (

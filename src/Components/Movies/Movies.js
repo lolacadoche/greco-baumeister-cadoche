@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Movie from "../Movie/Movie";
+import { Link } from 'react-router-dom';
 
 class Movies extends Component {
     constructor(props) {
@@ -27,6 +28,9 @@ class Movies extends Component {
     render() {
         return (
             <div className="row">
+                <Link to="/peliculas">
+                        <button className="btn btn-primary">Ver todas</button>
+                </Link>
                  <section className="row cards all-movies" id="movies">
                      {this.state.peliculas ? (
                         this.state.peliculas.map((peliculas) => (

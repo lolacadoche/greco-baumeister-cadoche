@@ -7,7 +7,9 @@ class FormRegister extends Component{
         this.state = {
             email: "",
             password: "",
-            error: ""
+            errorEmail: "",
+            errorPassword: "",
+            errorUser: ""
         }
     }
 
@@ -27,15 +29,15 @@ class FormRegister extends Component{
         }
 
         
-        if(this.state.email.includes("@")){
+        if(!this.state.email.includes("@")){
             this.setState({
-                error: "email mal formateado."
+                errorEmail: "E-mail mal formateado."
             })
             return;
         }
         if(this.state.password.length < 6 ){
             this.setState({
-                error: "La contraseña debe tener al menos 6 caracteres."
+                errorPassword: "La contraseña debe tener al menos 6 caracteres."
             })
             return;
         }
@@ -48,7 +50,7 @@ class FormRegister extends Component{
             )
             if(usersFiltrado.length > 0){
                 this.setState({
-                    error:"Ya existe un usuario con el mail ingresado."
+                    errorUser:"Ya existe un usuario con el mail ingresado."
                 })
                 return;
             } else{
@@ -61,6 +63,8 @@ class FormRegister extends Component{
             let usersInicial = [usuarioACrear];
             let usersEnJson = JSON.stringify(usersInicial);
             localStorage.setItem("users", usersEnJson);
+            this.props.history.push("/login")
+
             }
     }
      render(){
@@ -71,12 +75,12 @@ class FormRegister extends Component{
                         <div className="form-group">
                             <label>Email</label>
                             <input type="text" name="email" value={this.state.email} onChange={(event) => this.controlarCambios(event)} className="form-control"/>
-                            <p>{this.state.error}</p>
+                            <p>{this.state.errorEmail}</p>
                         </div>
                         <div className="form-group">
                             <label>Contraseña</label>
                             <input type="text" name="password" value={this.state.password} onChange={(event) => this.controlarCambios(event)} className="form-control"/>
-                            <p>{this.state.error}</p>
+                            <p>{this.state.errorPassword}</p>
                         </div>
                         <button type="submit" className="btn btn-primary btn-block">Registrarme</button>
                     </form>

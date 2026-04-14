@@ -78,13 +78,13 @@ class Movie extends Component {
 
                 <div className="cardBody"> 
                     <h5 className="card-title">{this.props.name}</h5>
-                    <button onClick={()=> this.cambio()}>{this.state.boton} </button>
+                    <button onClick={()=> this.cambio()} className='btn btn-primary'>{this.state.boton} </button>
                     <section className={`extra ${this.state.claseOcultar}`}>
-                        <p>{this.props.overview}</p>
+                        <p className="card-text">{this.props.overview}</p>
                     </section>
 
                     <Link to={`/DetallePelicula/id/${this.props.id}`}>
-                        <button className='btn btn-primary'>Ver detalle</button>
+                        <button className='btn btn-primary' >Ver detalle</button>
                     </Link>
                     {this.state.favorito ? 
                     <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>

@@ -30,7 +30,7 @@ function App() {
 
     <React.Fragment>
       <div className="container">
-      <h1>UdeSA Movies</h1>
+      <h1>MovieMates</h1>
       <Header />
       <Switch>
         <Route path="/" exact={true} component={Home} />
