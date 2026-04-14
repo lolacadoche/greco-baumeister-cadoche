@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Movie from "../../Components/Movies/Movies";
+import Movie from "../../Components/Movie/Movie";
 
 class Peliculas extends Component {
     constructor(props) {
@@ -71,7 +71,7 @@ class Peliculas extends Component {
                     />
                 </form>
 
-                <section className="personajeContainer">
+                <section className="row cards all-movies">
                     {this.state.peliculas.length > 0 ? (
                         this.state.peliculas.map((pelicula) => (
                             <Movie

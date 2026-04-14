@@ -5,7 +5,9 @@ class Movie extends Component {
     constructor(props){
         super(props)
         this.state={
-            favorito: false
+            favorito: false,
+            boton: "Ver más",
+            claseOcultar: "hide"
         }
     }
     componentDidMount() {
@@ -20,7 +22,19 @@ class Movie extends Component {
             }
         }
     }
-
+    cambio(){
+        if (this.state.boton === "Ver más"){
+            this.setState({
+                boton: "Ver menos",
+                claseOcultar: "show"
+            })
+        } else {
+            this.setState({
+                boton: "Ver más",
+                claseOcultar: "hide"
+            })
+        }
+    }
     favoritos() {
         let id = this.props.id
         let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
@@ -64,11 +78,13 @@ class Movie extends Component {
 
                 <div className="cardBody"> 
                     <h5 className="card-title">{this.props.name}</h5>
-
-                    <p className="card-text">{this.props.overview}</p>
+                    <button onClick={()=> this.cambio()} className='btn btn-primary'>{this.state.boton} </button>
+                    <section className={`extra ${this.state.claseOcultar}`}>
+                        <p className="card-text">{this.props.overview}</p>
+                    </section>
 
                     <Link to={`/DetallePelicula/id/${this.props.id}`}>
-                        <button className='btn btn-primary'>Ver detalle</button>
+                        <button className='btn btn-primary' >Ver detalle</button>
                     </Link>
                     {this.state.favorito ? 
                     <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>

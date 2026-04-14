@@ -6,14 +6,17 @@ class Register extends Component{
         super(props);
         this.state = {};
     }
-}
-render()
-    return(
+
+    render(){
+     return(
         <section>
-            <h2>Register</h2>
-            <FormRegister history={this.props.history}/>
+            <h2 className="alert alert-primary">Register</h2>
+            <FormRegister/>
         </section>
     )
+    }
+}
+
 
 
 export default Register;
