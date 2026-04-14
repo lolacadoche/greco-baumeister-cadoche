@@ -29,7 +29,7 @@ class Series extends Component{
                  <section className="row cards" id="tv-show">
                      {this.state.series ? (
                         this.state.series.map((series) => (
-                           <Serie key={series.id} id={series.id} titulo={series.title} name={series.title} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.poster_path}`}  />
+                           <Serie key={series.id} id= {series.id} titulo={series.title} name={series.title} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.poster_path}`}  />
                         ))
                     ) : (<h3>Cargando...</h3>)}
                 </section>

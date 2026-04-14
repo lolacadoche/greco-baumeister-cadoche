@@ -36,7 +36,7 @@ class DetalleSerie extends Component {
     }
 
     favoritos() {
-        let id = this.props.match.params.id
+        let id = this.props.id
         let serieslocalStorage = JSON.parse(localStorage.getItem("seriesfavoritas"))
         let arrayasubir = []
         if (serieslocalStorage === null) {
@@ -59,7 +59,7 @@ class DetalleSerie extends Component {
         let serieslocalStorage = localStorage.getItem("seriesfavoritas")
         if (serieslocalStorage !== null) {
             let favoritasParseadas = JSON.parse(serieslocalStorage)
-            let favoritosFiltrados = favoritasParseadas.filter(id => id != this.state.info.id)
+            let favoritosFiltrados = favoritasParseadas.filter(id => id != this.props.id)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("seriesfavoritas", string)
             this.setState({

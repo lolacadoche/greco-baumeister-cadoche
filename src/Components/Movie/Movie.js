@@ -7,7 +7,7 @@ class Movie extends Component {
         this.state={
             favorito: false
         }
-            }
+    }
     componentDidMount() {
         let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
         if (peliculaslocalStorage) {
