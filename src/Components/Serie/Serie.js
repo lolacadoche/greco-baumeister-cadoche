@@ -6,9 +6,11 @@ class Serie extends Component {
         super(props)
         this.state={
             boton: "Ver más",
-            claseOcultar: "hide"
+            claseOcultar: "hide",
+            favorito: false
         }
             }
+
      cambio(){
         if (this.state.boton === "Ver más"){
             this.setState({
@@ -20,11 +22,6 @@ class Serie extends Component {
                 boton: "Ver más",
                 claseOcultar: "hide"
             })
-        }
-    }
-    render(){
-        this.state={
-            favorito: false
         }
     }
     componentDidMount() {
@@ -74,6 +71,7 @@ class Serie extends Component {
         }
     }
 
+    
     render() {
         return (
         <article className='single-card-tv'>
@@ -88,25 +86,13 @@ class Serie extends Component {
             <Link to={`/DetalleSerie/id/${this.props.id}`}>
                 <button className='btn btn-primary'>Ver detalle</button>
             </Link>
-        </article>
-    )
-            <article className='single-card-tv'>
-                <img src={this.props.image} alt={this.props.name} className="card-img-top" />
-            
-            <div className="cardBody"> 
-                <h5 className="card-title">{this.props.name}</h5>
-                <p className="card-text">{this.props.overview}</p>
-
-                <Link to={`/DetalleSerie/id/${this.props.id}`}>
-                    <button className='btn btn-primary'>Ver detalle</button>
-                </Link>
-                {this.state.favorito ? 
+            {this.state.favorito ? 
                 <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>
                 :  <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
                 }   
-            </div>
-            </article>
-        )
+        </article>
+    )
+            
     }
 }
 
