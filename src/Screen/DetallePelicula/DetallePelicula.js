@@ -1,56 +1,93 @@
 import React, { Component } from "react";
 
 
-class DetallePelicula extends Component{
-    constructor(props){
+class DetallePelicula extends Component {
+    constructor(props) {
         super(props);
-        this.state={
-            info: {},
+        this.state = {
+            info: null,
             favorito: false
         };
     }
-    componentDidMount(){
-      let id = this.props.match.params.id
-      let url = `https://api.themoviedb.org/3/movie/${id}?api_key=cd21534ccf3ef8b078f7ac273cdf32ca`;
+    componentDidMount() {
+        let id = this.props.match.params.id
+        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
+        let url = `https://api.themoviedb.org/3/movie/${id}?api_key=cd21534ccf3ef8b078f7ac273cdf32ca`;
 
 
         fetch(url)
             .then(response => response.json())
-            .then(data =>{
+            .then(data => {
                 this.setState({
                     info: data
                 });
             })
             .catch(error => console.log(error));
-            
+
+        if (peliculaslocalStorage) {
+            let peliculaEntrada = peliculaslocalStorage.find((idLocal) => idLocal == id)
+
+            if (peliculaEntrada) {
+                this.setState({
+                    favorito: true
+                })
+            }
+        }
+
+
+
+
+
     }
-    favoritos(){
+
+
+    favoritos() {
         let id = this.props.match.params.id
         let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
         let arrayasubir = []
-        if (peliculaslocalStorage === null){
+        if (peliculaslocalStorage === null) {
             arrayasubir.push(id)
             localStorage.setItem("peliculasfavoritas", JSON.stringify(arrayasubir))
+            this.setState({
+                favorito: true
+            })
         }
-        else{
-
+        else {
+            peliculaslocalStorage.push(id)
+            localStorage.setItem("peliculasfavoritas", JSON.stringify(peliculaslocalStorage))
+            this.setState({
+                favorito: true
+            })
         }
-        
     }
 
-    render(){
-        return(
-          
-            <div className="row">
-                <h2>{this.state.info.title}</h2>
-                <img src={this.state.info.poster_path} alt="foto"/>
-                <p>{this.state.info.vote_average}</p>
-                <p>{this.state.info.release_date}</p>
-                <p>{this.state.info.runtime}</p>
-                <p>{this.state.info.overview}</p>
-                <p>{this.state.info.genres[0].name}</p> 
-                <button onClick = {()=>this.favoritos()}>{this.state.favorito?"Quitar de favoritos": "Agregar a favoritos"}</button>
-            </div>
+    quitarDeFavoritos() {
+        let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas")
+        if (peliculaslocalStorage !== null) {
+            let favoritasParseadas = JSON.parse(peliculaslocalStorage)
+            let favoritosFiltrados = favoritasParseadas.filter(id => id !== this.state.info.id)
+            let string = JSON.stringify(favoritosFiltrados)
+            localStorage.setItem("peliculasfavoritas", string)
+    }
+
+    render() {
+        return (
+            this.state.info === null ? <h2>Cargando...</h2> :
+                <section className="row">
+                    <img src={this.state.info.poster_path} alt="foto" className="col-md-6" />
+                    <section className="col-md-6 info">
+                        <h3>{this.state.info.title}</h3>
+                        <p className="description">{this.state.info.overview}</p>
+                        <p className="mt-0 mb-0">{this.state.info.release_date}</p>
+                        <p className="mt-0 mb-0 length">{this.state.info.runtime}</p>
+                        <p className="mt-0">{this.state.info.vote_average}</p>
+                        <p>{this.state.info.genres[0].name}</p>
+                        {
+                            !this.state.favorito ? <button onClick={() => this.favoritos()}>Agregar a favoritos</button>
+                                : <button onClick={() => this.quitarDeFavoritos()}>Quitar de favoritos</button>
+                        }
+                    </section>
+                </section>
         )
     }
 }
