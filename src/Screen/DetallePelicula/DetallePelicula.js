@@ -25,7 +25,7 @@ class DetallePelicula extends Component {
             .catch(error => console.log(error));
 
         if (peliculaslocalStorage) {
-            let peliculaEntrada = peliculaslocalStorage.find((idLocal) => idLocal == id)
+            let peliculaEntrada = peliculaslocalStorage.includes(id)
 
             if (peliculaEntrada) {
                 this.setState({
@@ -55,11 +55,16 @@ class DetallePelicula extends Component {
         }
     }
 
-    quitarDeFavoritos() {
+    quitarDeFavoritos() { 
         let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas")
         if (peliculaslocalStorage !== null) {
             let favoritasParseadas = JSON.parse(peliculaslocalStorage)
-            let favoritosFiltrados = favoritasParseadas.filter(id => id !== this.state.info.id)
+            console.log(favoritasParseadas)
+            console.log(this.state.info.id)
+            let favoritosFiltrados = favoritasParseadas.filter(id => {
+                return id != this.state.info.id
+            } )
+            console.log(favoritosFiltrados)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("peliculasfavoritas", string)
             this.setState({
@@ -81,8 +86,8 @@ class DetallePelicula extends Component {
                         <p className="mt-0">{this.state.info.vote_average}</p>
                         <p>{this.state.info.genres[0].name}</p>
                         {
-                            !this.state.favorito ? <button onClick={() => this.favoritos()}>Agregar a favoritos</button>
-                                : <button onClick={() => this.quitarDeFavoritos()}>Quitar de favoritos</button>
+                            this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()}>Quitar de favoritos</button>
+                                : <button onClick={() => this.favoritos()}>Agregar a favoritos</button>
                         }
                     </section>
                 </section>

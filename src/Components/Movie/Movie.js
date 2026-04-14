@@ -4,7 +4,58 @@ import { Link } from "react-router-dom";
 class Movie extends Component {
     constructor(props){
         super(props)
+        this.state={
+            favorito: false
+        }
             }
+    componentDidMount() {
+        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
+        if (peliculaslocalStorage) {
+            let peliculaEntrada = peliculaslocalStorage.includes(this.props.id)
+
+            if (peliculaEntrada) {
+                this.setState({
+                    favorito: true
+                })
+            }
+        }
+    }
+
+    favoritos() {
+        let id = this.props.id
+        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
+        let arrayasubir = []
+        if (peliculaslocalStorage === null) {
+            arrayasubir.push(id)
+            localStorage.setItem("peliculasfavoritas", JSON.stringify(arrayasubir))
+            this.setState({
+                favorito: true
+            })
+        }
+        else {
+            peliculaslocalStorage.push(id)
+            localStorage.setItem("peliculasfavoritas", JSON.stringify(peliculaslocalStorage))
+            this.setState({
+                favorito: true
+            })
+        }
+    }
+
+    quitarDeFavoritos() { 
+        let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas")
+        if (peliculaslocalStorage !== null) {
+            let favoritasParseadas = JSON.parse(peliculaslocalStorage)
+            let favoritosFiltrados = favoritasParseadas.filter(id => {
+                return id != this.props.id
+            } )
+            console.log(favoritosFiltrados)
+            let string = JSON.stringify(favoritosFiltrados)
+            localStorage.setItem("peliculasfavoritas", string)
+            this.setState({
+                favorito: false
+            })
+        }
+    }
 
     render() {
         return (
@@ -19,6 +70,10 @@ class Movie extends Component {
                     <Link to={`/DetallePelicula/id/${this.props.id}`}>
                         <button className='btn btn-primary'>Ver detalle</button>
                     </Link>
+                    {this.state.favorito ? 
+                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>
+                    :  <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
+                    }   
                 </div>
             </article>
         )

@@ -25,7 +25,7 @@ class DetalleSerie extends Component {
             .catch(error => console.log(error));
 
         if (serieslocalStorage) {
-            let serieEntrada = serieslocalStorage.find((idLocal) => idLocal == id)
+            let serieEntrada = serieslocalStorage.includes(id)
 
             if (serieEntrada) {
                 this.setState({
@@ -59,9 +59,12 @@ class DetalleSerie extends Component {
         let serieslocalStorage = localStorage.getItem("seriesfavoritas")
         if (serieslocalStorage !== null) {
             let favoritasParseadas = JSON.parse(serieslocalStorage)
-            let favoritosFiltrados = favoritasParseadas.filter(id => id !== this.state.info.id)
+            let favoritosFiltrados = favoritasParseadas.filter(id => id != this.state.info.id)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("seriesfavoritas", string)
+            this.setState({
+                favorito: false
+            })
         }
     }
 

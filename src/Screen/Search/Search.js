@@ -30,13 +30,12 @@ componentDidMount(){
 
     if (this.state.resultados.length > 0) {
         contenido = (
-            if(this)
             <section className="card-Container">
                 {this.state.resultados.map((item, index) => (
                     <Movie key={index} data={item} />
                 ))}
             </section>
-        );
+    )
     
     } else {
         contenido = (
