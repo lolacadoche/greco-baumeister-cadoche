@@ -10,6 +10,7 @@ import NotFound from './Screen/NotFound/NotFound';
 import Peliculas from './Screen/Peliculas/Peliculas';
 import Series from './Screen/Series/Series';
 import Register from './Screen/Register/Register';
+import Search from './Screen/Search/Search';
 
 
 import { Route, Switch } from "react-router-dom";
@@ -40,6 +41,7 @@ function App() {
         <Route path="/Login" component={Login} />
         <Route path="/Peliculas" component={Peliculas} />
         <Route path="/Series" component={Series} />
+        <Route path="/search/:query/:tipo" component={Search} />
         <Route path="*" component={NotFound} />
       </Switch>
 
