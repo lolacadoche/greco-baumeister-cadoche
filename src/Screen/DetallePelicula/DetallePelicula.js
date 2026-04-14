@@ -33,13 +33,7 @@ class DetallePelicula extends Component {
                 })
             }
         }
-
-
-
-
-
     }
-
 
     favoritos() {
         let id = this.props.match.params.id
@@ -68,13 +62,17 @@ class DetallePelicula extends Component {
             let favoritosFiltrados = favoritasParseadas.filter(id => id !== this.state.info.id)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("peliculasfavoritas", string)
+            this.setState({
+                favorito: false
+            })
+        }
     }
 
-    render() {
-        return (
+    render(){
+        return(
             this.state.info === null ? <h2>Cargando...</h2> :
                 <section className="row">
-                    <img src={this.state.info.poster_path} alt="foto" className="col-md-6" />
+                    <img src={`https://image.tmdb.org/t/p/w342${this.state.info.poster_path}`} alt="foto" className="col-md-6" />
                     <section className="col-md-6 info">
                         <h3>{this.state.info.title}</h3>
                         <p className="description">{this.state.info.overview}</p>
@@ -91,6 +89,5 @@ class DetallePelicula extends Component {
         )
     }
 }
-
 export default DetallePelicula;
 
