@@ -68,7 +68,7 @@ class Favoritos extends Component {
         <section className="row cards" id="tv-show">
           {this.state.favSeries ? (
             this.state.favSeries.map((series) => (
-              <Serie key={series.id} titulo={series.title} name={series.title} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.poster_path}`} />
+              <Serie key={series.id} name={series.name} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.poster_path}`} id={series.id}/>
             ))
           ) : (<h3>Cargando...</h3>)}
         </section>
