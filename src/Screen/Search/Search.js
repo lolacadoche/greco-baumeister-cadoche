@@ -45,7 +45,9 @@ class Search extends Component {
             if (this.state.tipo === "series") {
                 contenido = (
                     <section className="card-container">
-                        {this.state.resultados.map((item, index) => (<Serie key={index} data={item} />))}
+                        {this.state.resultados.map((series) => (
+                           <Serie key={series.id} id= {series.id} titulo={series.title} name={series.title} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.poster_path}`}  />
+                        ))}
                     </section>
                 )
             }
@@ -53,7 +55,7 @@ class Search extends Component {
             else if (this.state.tipo === "peliculas") {
                 contenido = (
                     <section className="card-Container">
-                        {this.state.resultados.map((item, index) => (<Movie key={index} data={item} />))}
+                        {this.state.resultados.map((peliculas) => (<Movie key={peliculas.id} titulo={peliculas.title} name={peliculas.title} overview={peliculas.overview} image={`https://image.tmdb.org/t/p/w342${peliculas.poster_path}`}  id={peliculas.id} />))}
                     </section>
                 )
             }

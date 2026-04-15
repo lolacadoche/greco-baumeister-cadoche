@@ -36,15 +36,16 @@ class FormLogin extends Component {
 
         let usersConvertidos = JSON.parse(usersEnStorage);
         let usersFilatrado = usersConvertidos.filter(
-            (user) => user.email === email)
+            (user) => user.email === this.state.email)
 
+    
         if (usersFilatrado.length === 0) {
             this.setState({
                 error: "El usuario ingresado no existe"
             })
         }
 
-        if (usersFilatrado[0].password !== password) {
+        if (usersFilatrado[0].password !== this.state.password) {
             this.setState({
                 error: "Las credenciales ingresadas son invalidas"
             })
@@ -78,7 +79,6 @@ class FormLogin extends Component {
                 </div>
                 <button type="button">Login</button>
 
-                {/* {this.state.error && <p>{this.state.error}</p>}            */}
             
             </form>
         )

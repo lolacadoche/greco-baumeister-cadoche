@@ -75,15 +75,15 @@ class Serie extends Component {
     render() {
         return (
         <article className='single-card-tv'>
-            <img src={this.props.data.image} alt={this.props.name} className="card-img-top"/>
+            <img src={this.props.image} alt={this.props.name} className="card-img-top"/>
         
-            <h5 className="card-title">{this.props.data.name}</h5>
+            <h5 className="card-title">{this.props.name}</h5>
             <button onClick={()=> this.cambio()} className='btn btn-primary'>{this.state.boton} </button>
                     <section className={`extra ${this.state.claseOcultar}`}>
-                        <p className="card-text">{this.props.data.overview}</p>
+                        <p className="card-text">{this.props.overview}</p>
                     </section>
         
-            <Link to={`/DetalleSerie/id/${this.props.data.id}`}>
+            <Link to={`/DetalleSerie/id/${this.props.id}`}>
                 <button className='btn btn-primary'>Ver detalle</button>
             </Link>
             {this.state.favorito ? 
