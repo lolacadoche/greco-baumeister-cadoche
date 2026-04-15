@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+
 
 class FormLogin extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class FormLogin extends Component {
         let usersFilatrado = usersConvertidos.filter(
             (user) => user.email === this.state.email)
 
-    
+
         if (usersFilatrado.length === 0) {
             this.setState({
                 error: "El usuario ingresado no existe"
@@ -59,28 +60,35 @@ class FormLogin extends Component {
         this.props.history.push("/")
     }
 
+  
+
     render() {
         return (
-            <form>
-                <div>
-                    <label>Email:</label>
-                    <input type="email"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.preventSubmitEmail} />
-                </div>
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <form>
+                        <div className="form-group">
+                            <label>Email:</label>
+                            <input type="email"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.preventSubmitEmail} />
+                        </div>
 
-                <div>
-                    <label>Password:</label>
-                    <input type="password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.preventSubmitPassword} />
-                </div>
-                <button type="button">Login</button>
+                        <div className="form-group">
+                            <label>Password:</label>
+                            <input type="password"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.preventSubmitPassword} />
+                        </div>
+                        <button type="button" className="btn btn-primary btn-block">Login</button>
+                    </form>
+                    <p class="mt-3 text-center">¿No tenés cuenta?</p><Link to="/Register">Register</Link>
 
-            
-            </form>
+                </div>
+            </div>
+
         )
     }
 }
