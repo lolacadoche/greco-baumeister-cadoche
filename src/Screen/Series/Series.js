@@ -23,7 +23,7 @@ class Series extends Component {
     filtrarSeries() {
         this.setState({
             series: this.state.copiaSeries.filter(serie =>
-                serie.title.toLowerCase().includes(this.state.filtro.toLowerCase())
+                serie.name.toLowerCase().includes(this.state.filtro.toLowerCase())
             )
         })
     }
@@ -62,10 +62,11 @@ class Series extends Component {
         return (
             <React.Fragment>
 
-                <form onSubmit={(event) => this.evitarSubmit(event)}>
+                <form className="filter-form px-0 mb-3" onSubmit={(event) => this.evitarSubmit(event)}>
                     <label>Title:</label>
                     <input
                         type="text"
+                        placeholder="Buscar dentro de la lista"
                         onChange={(event) => this.controlarCambios(event)}
                         value={this.state.filtro}
                     />
@@ -77,7 +78,7 @@ class Series extends Component {
                             <Serie
                                 key={serie.id}
                                 id={serie.id}
-                                name={serie.title}
+                                name={serie.name}
                                 image={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
 
                             />

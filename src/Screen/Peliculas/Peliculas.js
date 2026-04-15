@@ -62,10 +62,10 @@ class Peliculas extends Component {
         return (
             <React.Fragment>
 
-                <form onSubmit={(event) => this.evitarSubmit(event)}>
-                    <label>Title:</label>
+                <form className="filter-form px-0 mb-3" onSubmit={(event) => this.evitarSubmit(event)}>
                     <input
                         type="text"
+                        placeholder="Buscar dentro de la lista..."
                         onChange={(event) => this.controlarCambios(event)}
                         value={this.state.filtro}
                     />
