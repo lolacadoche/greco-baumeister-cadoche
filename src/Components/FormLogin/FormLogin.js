@@ -1,0 +1,88 @@
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
+class FormLogin extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            error: ""
+        }
+    }
+
+    preventSubmitEmail = (e) => {
+        this.setState({
+            email: e.target.value,
+        })
+    }
+    preventSubmitPassword = (e) => {
+        this.setState({
+            password: e.target.value,
+        })
+    }
+
+
+    submit = (e) => {
+        e.preventDefault();
+        let usersEnStorage = localStorage.getItem("users");
+
+        if (usersEnStorage === null) {
+            this.setState({
+                error: "Lo ingresado es invalido"
+            })
+
+        }
+
+        let usersConvertidos = JSON.parse(usersEnStorage);
+        let usersFilatrado = usersConvertidos.filter(
+            (user) => user.email === email)
+
+        if (usersFilatrado.length === 0) {
+            this.setState({
+                error: "El usuario ingresado no existe"
+            })
+        }
+
+        if (usersFilatrado[0].password !== password) {
+            this.setState({
+                error: "Las credenciales ingresadas son invalidas"
+            })
+        }
+
+        sessionStorage.setItem(
+            "usuarioEnSesion",
+            JSON.stringify({ sesionActiva: true })
+        )
+
+        this.props.history.push("/")
+    }
+
+    render() {
+        return (
+            <form>
+                <div>
+                    <label>Email:</label>
+                    <input type="email"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.preventSubmitEmail} />
+                </div>
+
+                <div>
+                    <label>Password:</label>
+                    <input type="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.preventSubmitPassword} />
+                </div>
+                <button type="button">Login</button>
+
+                {/* {this.state.error && <p>{this.state.error}</p>}            */}
+            
+            </form>
+        )
+    }
+}
+
+export default withRouter(FormLogin)
