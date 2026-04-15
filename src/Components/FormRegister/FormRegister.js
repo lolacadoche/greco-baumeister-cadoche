@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom/cjs/react-router-dom.min";
+
 
 class FormRegister extends Component{
     constructor(props){
@@ -19,7 +20,7 @@ class FormRegister extends Component{
         });
     }
     
-    sumbit(event){
+    submit(event){
         event.preventDefault();
 
         let usuarioACrear = {
@@ -41,37 +42,48 @@ class FormRegister extends Component{
             })
             return;
         }
-        
+
         let userStorage = localStorage.getItem("users");
+        console.log(userStorage);
+        
         if(userStorage !== null){
+            console.log("no es nullo");
+            
             let usersParseado = JSON.parse(userStorage)
             let usersFiltrado = usersParseado.filter(
                 user => user.email === this.state.email
             )
             if(usersFiltrado.length > 0){
+                console.log("el pj es el mismo");
+                
                 this.setState({
                     errorUser:"Ya existe un usuario con el mail ingresado."
                 })
                 return;
             } else{
+                console.log(usersParseado);
+                console.log(usuarioACrear);
+                
                 usersParseado.push(usuarioACrear);
                 let usersEnJson = JSON.stringify(usersParseado)
                 localStorage.setItem("users", usersEnJson);
             }
-            this.props.history.push("/login")
+            
         } else{
             let usersInicial = [usuarioACrear];
             let usersEnJson = JSON.stringify(usersInicial);
             localStorage.setItem("users", usersEnJson);
-            this.props.history.push("/login")
+
 
             }
+
+            this.props.history.push("/login")
     }
      render(){
             return(
                 <div className="row justify-content-center">
                     <div className="col-md-6">
-                    <form onSubmit={(event) => this.sumbit(event)}>
+                    <form onSubmit={(event) => this.submit(event)}>
                         <div className="form-group">
                             <label>Email</label>
                             <input type="text" name="email" value={this.state.email} onChange={(event) => this.controlarCambios(event)} className="form-control"/>
@@ -83,6 +95,7 @@ class FormRegister extends Component{
                             <p>{this.state.errorPassword}</p>
                         </div>
                         <button type="submit" className="btn btn-primary btn-block">Registrarme</button>
+                        <p>{this.state.errorUser}</p>
                     </form>
                     <p className="mt-3 text-center">¿Ya tenés cuenta? <Link to="/login">Iniciar sesión</Link></p>
                     </div>
@@ -92,4 +105,4 @@ class FormRegister extends Component{
         }
 
 }
-export default FormRegister;
+export default withRouter(FormRegister)
