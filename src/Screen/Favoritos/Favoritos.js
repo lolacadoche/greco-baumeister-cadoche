@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Buscador from "../../Components/Buscador/Buscador";
 import Movie from "../../Components/Movie/Movie";
 import Serie from "../../Components/Serie/Serie";
+import Cookie from 'universal_cookie'
+
+const cookies = new Cookies()
 
 class Favoritos extends Component {
   constructor(props) {
