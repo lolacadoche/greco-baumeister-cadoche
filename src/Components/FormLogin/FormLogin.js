@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import Cookies from "universal-cookie";
 
+let cookies = new Cookies();
 
 class FormLogin extends Component {
     constructor(props) {
@@ -52,15 +54,28 @@ class FormLogin extends Component {
             })
         }
 
+        if (usersFilatrado.length > 0 && usersFilatrado[0].password === this.state.password) {
+            cookies.set("user-auth-cookie", usersFilatrado[0].email);
+
+            sessionStorage.setItem(
+                "usuarioEnSesion",
+                JSON.stringify({ sesionActiva: true }));
+
+            this.props.history.push("/")
+        }
+
+
+
+
         sessionStorage.setItem(
             "usuarioEnSesion",
             JSON.stringify({ sesionActiva: true })
         )
 
-        this.props.history.push("/")
+
     }
 
-  
+
 
     render() {
         return (

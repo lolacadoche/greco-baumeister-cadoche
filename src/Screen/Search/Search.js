@@ -45,7 +45,7 @@ class Search extends Component {
             if (this.state.tipo === "series") {
                 contenido = (
                     <section className="card-container">
-                        {this.state.resultados.map((series) => (<Serie key={series.id} id={series.id} titulo={series.title} name={series.title} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.poster_path}`} />
+                        {this.state.resultados.map((series) => (<Serie key={series.id} id={series.id} titulo={series.name} name={series.name} overview={series.overview} image={`https://image.tmdb.org/t/p/w342${series.name}`} />
                         ))}
                     </section>
                 )
