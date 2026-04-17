@@ -19,7 +19,7 @@ class Movie extends Component {
                 this.setState({
                     favorito: true
                 })
-            }
+            } 
         }
     }
     cambio(){

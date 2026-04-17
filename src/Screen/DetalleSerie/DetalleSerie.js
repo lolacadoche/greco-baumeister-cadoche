@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Cookies from 'universal-cookie'
 
+const cookies = new Cookies()
 
 class DetalleSerie extends Component {
     constructor(props) {
@@ -36,7 +38,7 @@ class DetalleSerie extends Component {
     }
 
     favoritos() {
-        let id = this.props.id
+        let id = this.props.match.params.id
         let serieslocalStorage = JSON.parse(localStorage.getItem("seriesfavoritas"))
         let arrayasubir = []
         if (serieslocalStorage === null) {

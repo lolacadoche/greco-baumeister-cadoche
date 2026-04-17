@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Cookies from 'universal-cookie'
 
+const cookies = new Cookies()
 
 class DetallePelicula extends Component {
     constructor(props) {
@@ -55,7 +57,7 @@ class DetallePelicula extends Component {
         }
     }
 
-    quitarDeFavoritos() { 
+    quitarDeFavoritos() {
         let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas")
         if (peliculaslocalStorage !== null) {
             let favoritasParseadas = JSON.parse(peliculaslocalStorage)
@@ -63,7 +65,7 @@ class DetallePelicula extends Component {
             console.log(this.state.info.id)
             let favoritosFiltrados = favoritasParseadas.filter(id => {
                 return id != this.state.info.id
-            } )
+            })
             console.log(favoritosFiltrados)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("peliculasfavoritas", string)
@@ -73,26 +75,32 @@ class DetallePelicula extends Component {
         }
     }
 
-    render(){
-        return(
-            this.state.info === null ? <h2>Cargando...</h2> :
-                <section className="row">
-                    <img src={`https://image.tmdb.org/t/p/w342${this.state.info.poster_path}`} alt="foto" className="col-md-6" />
-                    <section className="col-md-6 info">
-                        <h3>{this.state.info.title}</h3>
-                        <p className="description">{this.state.info.overview}</p>
-                        <p className="mt-0 mb-0">{this.state.info.release_date}</p>
-                        <p className="mt-0 mb-0 length">{this.state.info.runtime}</p>
-                        <p className="mt-0">{this.state.info.vote_average}</p>
-                        <p>{this.state.info.genres[0].name}</p>
-                        {
-                            this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()}>Quitar de favoritos</button>
-                                : <button onClick={() => this.favoritos()}>Agregar a favoritos</button>
-                        }
-                    </section>
-                </section>
+    render() {
+        let usuario = cookies.get('user-auth-cookie')
+        return (
+            <div>
+                {usuario === null ?
+                    <h2> Tenes que iniciar sesion para ver favoritos</h2>
+                    : this.state.info === null ? <h2>Cargando...</h2> :
+                        <section className="row">
+                            <img src={`https://image.tmdb.org/t/p/w342${this.state.info.poster_path}`} alt="foto" className="col-md-6" />
+                            <section className="col-md-6 info">
+                                <h3>{this.state.info.title}</h3>
+                                <p className="description">{this.state.info.overview}</p>
+                                <p className="mt-0 mb-0">{this.state.info.release_date}</p>
+                                <p className="mt-0 mb-0 length">{this.state.info.runtime}</p>
+                                <p className="mt-0">{this.state.info.vote_average}</p>
+                                <p>{this.state.info.genres[0].name}</p>
+                                {
+                                    this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()}>Quitar de favoritos</button>
+                                        : <button onClick={() => this.favoritos()}>Agregar a favoritos</button>
+                                }
+                            </section>
+                        </section>
+                }
+            </div>
         )
     }
-}
+}  
 export default DetallePelicula;
 

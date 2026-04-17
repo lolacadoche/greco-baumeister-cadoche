@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Buscador from "../../Components/Buscador/Buscador";
 import Movie from "../../Components/Movie/Movie";
 import Serie from "../../Components/Serie/Serie";
-import Cookie from 'universal_cookie'
+import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
 
@@ -52,10 +52,15 @@ class Favoritos extends Component {
       })
     }
   }
+  
   render() {
+    let usuario = cookies.get('user-auth-cookie')
     return (
       <div className="container">
-
+        {usuario === null ? 
+          <h2>Tenes que iniciar sesion para ver favoritos</h2>
+           : 
+        <React.Fragment>
         <Buscador />
 
         <h2 className="alert alert-primary">Favourite movies</h2>
@@ -75,6 +80,8 @@ class Favoritos extends Component {
             ))
           ) : (<h3>Cargando...</h3>)}
         </section>
+        </React.Fragment>
+      }
       </div>
     )
   }
