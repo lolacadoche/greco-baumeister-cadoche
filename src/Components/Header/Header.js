@@ -9,10 +9,13 @@ function Header (props) {
                 <li className="nav-link"> <Link to="/">Home</Link> </li>
                 <li className="nav-link"> <Link to="/Peliculas">Peliculas</Link> </li>
                 <li className="nav-link"> <Link to="/Series">Series</Link> </li>
+
                 <li className="nav-link"> <Link to="/Favoritos">Favoritas</Link> </li>
                 <li className="nav-link"> <Link to="/Register">Register</Link> </li>
                 <li className="nav-item"> <Link to="/Login">Login</Link> </li>
             </ul>
+
+        
         </nav>
         
         

@@ -73,7 +73,27 @@ class Movie extends Component {
 
     render() {
         console.log(this.props);
-        
+        let sesion= sessionStorage.getItem("usuarioEnSesion");
+        let userLogueado =false;
+
+        if(sesion !== null){
+            let sesionParseada = JSON.parse(sesion);
+            if(sesionParseada.sesionActiva === true){
+                userLogueado = true; 
+            }
+        }
+        let botonFav= null;
+        if(userLogueado){
+            if(this.state.favorito){
+                 botonFav = (
+                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
+               } else{
+               botonFav=( <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button> )
+               }  
+            }else{
+                botonFav = null
+            }
+            
         return (
             <article className='single-card-movie'>
                 <img src={this.props.image} alt={this.props.name} className="card-img-top"/>
@@ -88,10 +108,7 @@ class Movie extends Component {
                     <Link to={`/DetallePelicula/id/${this.props.id}`}>
                         <button className='btn btn-primary' >Ver detalle</button>
                     </Link>
-                    {this.state.favorito ? 
-                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>
-                    :  <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
-                    }   
+                    {botonFav}
                 </div>
             </article>
         )
