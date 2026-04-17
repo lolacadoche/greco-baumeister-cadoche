@@ -7,8 +7,7 @@ class Serie extends Component {
         this.state={
             boton: "Ver más",
             claseOcultar: "hide",
-            favorito: false
-        }
+            favorito: false        }
             }
 
      cambio(){
@@ -71,8 +70,29 @@ class Serie extends Component {
         }
     }
 
-    
     render() {
+         console.log(this.props);
+        let sesion= sessionStorage.getItem("usuarioEnSesion");
+        let userLogueado =false;
+
+        if(sesion !== null){
+            let sesionParseada = JSON.parse(sesion);
+            if(sesionParseada.sesionActiva === true){
+                userLogueado = true; 
+            }
+        }
+        let botonFav= null;
+        if(userLogueado){
+            if(this.state.favorito){
+                 botonFav = (
+                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
+               } else{
+               botonFav=( <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button> )
+               }  
+            }else{
+                botonFav = null
+            }
+    
         return (
         <article className='single-card-tv'>
             <img src={this.props.image} alt={this.props.name} className="card-img-top"/>
@@ -86,10 +106,7 @@ class Serie extends Component {
             <Link to={`/DetalleSerie/id/${this.props.id}`}>
                 <button className='btn btn-primary'>Ver detalle</button>
             </Link>
-            {this.state.favorito ? 
-                <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>
-                :  <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
-                }   
+            {botonFav}
         </article>
     )
             

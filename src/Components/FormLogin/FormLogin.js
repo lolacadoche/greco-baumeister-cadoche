@@ -76,17 +76,8 @@ class FormLogin extends Component {
             this.props.history.push("/")
         }
 
-
-
-
-        sessionStorage.setItem(
-            "usuarioEnSesion",
-            JSON.stringify({ sesionActiva: true })
-        )
-
-
     }
-    
+
 
 
     render() {
