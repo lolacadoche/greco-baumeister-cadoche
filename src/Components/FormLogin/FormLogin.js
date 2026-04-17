@@ -61,7 +61,7 @@ class FormLogin extends Component {
 
         if (usersFilatrado[0].password !== this.state.password) {
             this.setState({
-                error: "Las credenciales ingresadas son invalidas"
+                errorPassword: "Las credenciales ingresadas son invalidas"
             })
             return;
         }
@@ -102,6 +102,7 @@ class FormLogin extends Component {
                                 onChange={(event) => this.preventSubmitEmail(event)} />
                             <p>{this.state.errorEmail}</p>
 
+
                         </div>
 
                         <div className="form-group">
@@ -111,9 +112,11 @@ class FormLogin extends Component {
                                 value={this.state.password}
                                 onChange={(event) => this.preventSubmitPassword(event)} />
                             <p>{this.state.errorPassword}</p>
+                            <p>{this.state.errorUser}</p>
+
                         </div>
 
-                        <button type="button" className="btn btn-primary btn-block">Login</button>
+                        <button type="submit" className="btn btn-primary btn-block">Login</button>
                     </form>
                     <p class="mt-3 text-center">¿No tenés cuenta?</p><Link to="/Register">Register</Link>
 
