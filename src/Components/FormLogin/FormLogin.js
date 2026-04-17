@@ -10,7 +10,9 @@ class FormLogin extends Component {
         this.state = {
             email: "",
             password: "",
-            error: ""
+            errorEmail: "",
+            errorPassword: "",
+            errorUser: ""
         }
     }
 
@@ -26,15 +28,23 @@ class FormLogin extends Component {
     }
 
 
-    submit = (e) => {
-        e.preventDefault();
+    submit = (event) => {
+        event.preventDefault();
+
         let usersEnStorage = localStorage.getItem("users");
 
         if (usersEnStorage === null) {
             this.setState({
-                error: "Lo ingresado es invalido"
+                errorUser: "No hay usuarios registrados."
             })
+            return;
+        }
 
+        if (!this.state.email.includes("@")) {
+            this.setState({
+                errorEmail: "E-mail mal formateado."
+            })
+            return;
         }
 
         let usersConvertidos = JSON.parse(usersEnStorage);
@@ -44,14 +54,16 @@ class FormLogin extends Component {
 
         if (usersFilatrado.length === 0) {
             this.setState({
-                error: "El usuario ingresado no existe"
+                errorUser: "El usuario ingresado no existe"
             })
+            return;
         }
 
         if (usersFilatrado[0].password !== this.state.password) {
             this.setState({
                 error: "Las credenciales ingresadas son invalidas"
             })
+            return;
         }
 
         if (usersFilatrado.length > 0 && usersFilatrado[0].password === this.state.password) {
@@ -81,13 +93,15 @@ class FormLogin extends Component {
         return (
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <form>
+                    <form onSubmit={(event) => this.submit(event)}>
                         <div className="form-group">
                             <label>Email:</label>
                             <input type="email"
                                 name="email"
                                 value={this.state.email}
-                                onChange={this.preventSubmitEmail} />
+                                onChange={(event) => this.preventSubmitEmail(event)} />
+                            <p>{this.state.errorEmail}</p>
+
                         </div>
 
                         <div className="form-group">
@@ -95,8 +109,10 @@ class FormLogin extends Component {
                             <input type="password"
                                 name="password"
                                 value={this.state.password}
-                                onChange={this.preventSubmitPassword} />
+                                onChange={(event) => this.preventSubmitPassword(event)} />
+                            <p>{this.state.errorPassword}</p>
                         </div>
+
                         <button type="button" className="btn btn-primary btn-block">Login</button>
                     </form>
                     <p class="mt-3 text-center">¿No tenés cuenta?</p><Link to="/Register">Register</Link>
