@@ -64,7 +64,7 @@ class Favoritos extends Component {
         <Buscador />
 
         <h2 className="alert alert-primary">Favourite movies</h2>
-        <section className="row cards all-movies" id="movies">
+        <section className="row cards" id="movies">
           {this.state.favMovies ? (
             this.state.favMovies.map((peliculas) => (
               <Movie key={peliculas.id} titulo={peliculas.title} name={peliculas.title} overview={peliculas.overview} image={`https://image.tmdb.org/t/p/w342${peliculas.poster_path}`} id={peliculas.id} />

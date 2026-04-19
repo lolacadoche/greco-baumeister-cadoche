@@ -58,6 +58,7 @@ nav {
 }
 .single-card-movie {
     width: 24%;
+    margin: 10px;
 }
 .single-card-playing {
     width: 15%;
@@ -68,6 +69,7 @@ nav {
 }
 .single-card-tv {
     width: 19%;
+    margin: 10px;
 }
 .tv-show .card-text{
     height: 100px;
@@ -90,6 +92,11 @@ nav {
 
 .show {
     display: block;
+}
+.card-buttons{
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
 }
 
 @media(min-width: 765px){

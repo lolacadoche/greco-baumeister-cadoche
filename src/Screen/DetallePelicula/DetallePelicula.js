@@ -87,13 +87,13 @@ class DetallePelicula extends Component {
                             <section className="col-md-6 info">
                                 <h3>{this.state.info.title}</h3>
                                 <p className="description">{this.state.info.overview}</p>
-                                <p className="mt-0 mb-0">{this.state.info.release_date}</p>
-                                <p className="mt-0 mb-0 length">{this.state.info.runtime}</p>
-                                <p className="mt-0">{this.state.info.vote_average}</p>
-                                <p>{this.state.info.genres[0].name}</p>
+                                <p className="mt-0 mb-0"> <b>Fecha de estreno:</b> {this.state.info.release_date}</p>
+                                <p className="mt-0 mb-0 length"><b>Duración:</b> {this.state.info.runtime}</p>
+                                <p className="mt-0"><b>Puntuación:</b> {this.state.info.vote_average}</p>
+                                <p className="mt-0 mb-0"><b>Género: </b>{this.state.info.genres[0].name}</p>
                                 {
-                                    this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()}>Quitar de favoritos</button>
-                                        : <button onClick={() => this.favoritos()}>Agregar a favoritos</button>
+                                    this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()} className='btn btn-primary'>Quitar de favoritos</button>
+                                        : <button onClick={() => this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
                                 }
                             </section>
                         </section>

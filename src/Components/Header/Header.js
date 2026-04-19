@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter} from 'react-router-dom';
 
-
 class Header extends Component {
     constructor(props){
         super(props)
@@ -49,7 +48,6 @@ class Header extends Component {
         }
         
 }
-
     render(){
             return (
         <nav>

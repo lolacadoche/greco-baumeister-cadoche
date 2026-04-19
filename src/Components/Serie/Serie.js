@@ -87,7 +87,7 @@ class Serie extends Component {
                  botonFav = (
                     <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
                } else{
-               botonFav=( <button onClick={()=>this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button> )
+               botonFav=( <button onClick={()=>this.favoritos()} className="btn alert-info">♥️</button> )
                }  
             }else{
                 botonFav = null
@@ -97,16 +97,19 @@ class Serie extends Component {
         <article className='single-card-tv'>
             <img src={this.props.image} alt={this.props.name} className="card-img-top"/>
         
-            <h5 className="card-title">{this.props.name}</h5>
-            <button onClick={()=> this.cambio()} className='btn btn-primary'>{this.state.boton} </button>
-                    <section className={`extra ${this.state.claseOcultar}`}>
-                        <p className="card-text">{this.props.overview}</p>
-                    </section>
-        
-            <Link to={`/DetalleSerie/id/${this.props.id}`}>
-                <button className='btn btn-primary'>Ver detalle</button>
-            </Link>
+            <div className="cardBody"> 
+                <h5 className="card-title">{this.props.name}</h5>
+                <section className={`extra ${this.state.claseOcultar}`}>
+                    <p className="card-text">{this.props.overview}</p>
+                </section>
+                <div className="card-buttons">
+                    <button onClick={()=> this.cambio()} className='btn btn-primary'>{this.state.boton} </button>
+                    <Link to={`/DetalleSerie/id/${this.props.id}`}>
+                        <button className='btn btn-primary'>Ver detalle</button>
+                    </Link>
+                </div>
             {botonFav}
+            </div>
         </article>
     )
             

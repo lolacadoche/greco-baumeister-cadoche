@@ -90,10 +90,8 @@ class FormLogin extends Component {
                             <input type="email"
                                 name="email"
                                 value={this.state.email}
-                                onChange={(event) => this.preventSubmitEmail(event)} />
+                                onChange={(event) => this.preventSubmitEmail(event)} className="form-control"/>
                             <p>{this.state.errorEmail}</p>
-
-
                         </div>
 
                         <div className="form-group">
@@ -101,7 +99,7 @@ class FormLogin extends Component {
                             <input type="password"
                                 name="password"
                                 value={this.state.password}
-                                onChange={(event) => this.preventSubmitPassword(event)} />
+                                onChange={(event) => this.preventSubmitPassword(event)} className="form-control"/>
                             <p>{this.state.errorPassword}</p>
                             <p>{this.state.errorUser}</p>
 

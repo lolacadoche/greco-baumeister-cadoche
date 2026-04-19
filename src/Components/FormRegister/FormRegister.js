@@ -46,9 +46,7 @@ class FormRegister extends Component{
         let userStorage = localStorage.getItem("users");
         console.log(userStorage);
         
-        if(userStorage !== null){
-            console.log("no es nullo");
-            
+        if(userStorage !== null){            
             let usersParseado = JSON.parse(userStorage)
             let usersFiltrado = usersParseado.filter(
                 user => user.email === this.state.email

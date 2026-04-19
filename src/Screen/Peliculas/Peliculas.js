@@ -89,7 +89,7 @@ class Peliculas extends Component {
 
                 {
                     this.state.nextPage && (
-                        <button onClick={this.cargarMas}>
+                        <button onClick={this.cargarMas} className="btn btn-info">
                             Mas Peliculas
                         </button>
                     )

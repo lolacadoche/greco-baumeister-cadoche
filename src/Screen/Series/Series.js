@@ -63,10 +63,9 @@ class Series extends Component {
             <React.Fragment>
 
                 <form className="filter-form px-0 mb-3" onSubmit={(event) => this.evitarSubmit(event)}>
-                    <label>Title:</label>
                     <input
                         type="text"
-                        placeholder="Buscar dentro de la lista"
+                        placeholder="Buscar dentro de la lista..."
                         onChange={(event) => this.controlarCambios(event)}
                         value={this.state.filtro}
                     />
@@ -90,7 +89,7 @@ class Series extends Component {
 
                 {
                     this.state.nextPage && (
-                        <button onClick={this.cargarMas}>
+                        <button onClick={this.cargarMas} className="btn btn-info">
                             Mas series.
                         </button>
                     )

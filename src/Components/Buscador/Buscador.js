@@ -60,7 +60,7 @@ class Buscador extends Component {
           onChange={(event) => this.controlarCambios(event)}
         />
 
-        <button type="submit" className="btn.btn-success.btn-sm">Buscar</button>
+        <button type="submit" className="btn btn-success btn-sm">Buscar</button>
 
       </form>
     );
