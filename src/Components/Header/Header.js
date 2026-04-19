@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 
 
 class Header extends Component {
@@ -12,6 +12,17 @@ class Header extends Component {
             linkLogout: null
         }
     } 
+      Logout(){
+            sessionStorage.removeItem("usuarioEnSesion");
+            this.setState({
+                linkRegister: <li className="nav-link"> <Link to="/Register">Register</Link> </li>,
+                linkLogin: <li className="nav-link"> <Link to="/Login">Login</Link> </li>,
+                linkFav: null,
+                linkLogout: null
+            })
+            this.props.history.push("/login")
+        }
+
     componentDidMount(){
         let sesion= sessionStorage.getItem("usuarioEnSesion");
         let userLogueado = false;
@@ -23,17 +34,18 @@ class Header extends Component {
         if(userLogueado){
             this.setState({
                 linkFav: <li className="nav-link"> <Link to="/Favoritos">Favoritas</Link> </li>,
-                linkLogout: <li className="nav-item"> <Link to="/Home">Logout</Link> </li>,
+                linkLogout: <li className="nav-link"> <button onClick={() => this.Logout()} className="nav-link">Logout</button> </li>,
                 linkLogin: null,
                 linkRegister: null
             })   
         } else{
             this.setState({
                 linkRegister: <li className="nav-link"> <Link to="/Register">Register</Link> </li>,
-                linkLogin: <li className="nav-item"> <Link to="/Login">Login</Link> </li>,
+                linkLogin: <li className="nav-link"> <Link to="/Login">Login</Link> </li>,
                 linkFav: null,
                 linkLogout: null
             })
+            console.log(sessionStorage)
         }
         
 }
@@ -55,4 +67,4 @@ class Header extends Component {
         }
 
 }
-export default Header;
+export default withRouter(Header);

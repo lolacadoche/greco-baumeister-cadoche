@@ -109,8 +109,7 @@ class FormLogin extends Component {
 
                         <button type="submit" className="btn btn-primary btn-block">Login</button>
                     </form>
-                    <p class="mt-3 text-center">¿No tenés cuenta?</p><Link to="/Register">Register</Link>
-
+                    <p className="mt-3 text-center">¿No tenés cuenta?<Link to="/Register">Register</Link></p>
                 </div>
             </div>
 
