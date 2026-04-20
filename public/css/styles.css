@@ -104,3 +104,14 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 420px) {
+    .all-movies .single-card-movie {
+        width: 150px;
+    }
+
+    .single-card-tv {
+        width: 150px;
+    }
+
+}
