@@ -8,7 +8,7 @@ class Buscador extends Component {
       busqueda: "",
       tipo: ""
     };
-  }
+  };
 
   evitarSubmit(event) {
     event.preventDefault();
@@ -19,9 +19,9 @@ class Buscador extends Component {
     this.setState({
       busqueda: event.target.value
     });
-  }
+  };
 
- tipo = (e) => {
+  tipo = (e) => {
     this.setState({
       tipo: e.target.value
     });
@@ -30,41 +30,17 @@ class Buscador extends Component {
   render() {
     return (
       <form onSubmit={(event) => this.evitarSubmit(event)} className="search-form">
-        <label>
-          <input
-            type="radio"
-            name="tipo"
-            value="peliculas"
-            onChange={this.tipo}
-          />
-          Películas
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="tipo"
-            value="series"
-            onChange={this.tipo}
-          />
-          Series
-        </label>
-
-
-
-
-        <input name="searchData"
-          type="text"
-          placeholder="Buscar..."
-          value={this.state.busqueda}
-          onChange={(event) => this.controlarCambios(event)}
-        />
-
+        <input name="searchData" type="text" placeholder="Buscar..." value={this.state.busqueda} onChange={(event) => this.controlarCambios(event)} />
         <button type="submit" className="btn btn-success btn-sm">Buscar</button>
+        <div className="tipos">
+          <label>Películas <input type="radio" name="tipo" value="peliculas" onChange={this.tipo} /></label>
+
+          <label> Series  <input type="radio" name="tipo" value="series" onChange={this.tipo} /></label>
+        </div>
 
       </form>
-    );
+    )
   }
 }
 
-export default withRouter(Buscador)
+export default withRouter(Buscador);

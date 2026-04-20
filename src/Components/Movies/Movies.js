@@ -8,7 +8,7 @@ class Movies extends Component {
         this.state = {
             peliculas: []
         };
-    }
+    };
 
     componentDidMount() {
         let url = "https://api.themoviedb.org/3/movie/popular?api_key=cd21534ccf3ef8b078f7ac273cdf32ca";
@@ -22,7 +22,7 @@ class Movies extends Component {
             })
             .catch(error => console.log(error));
 
-    }
+    };
         
 
     render() {
@@ -39,8 +39,8 @@ class Movies extends Component {
                     ) : (<h3>Cargando...</h3>)}
                 </section>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Movies;
