@@ -21,7 +21,7 @@ class Buscador extends Component {
     });
   }
 
-  handleRadio = (e) => {
+ valor = (e) => {
     this.setState({
       tipo: e.target.value
     });
@@ -35,7 +35,7 @@ class Buscador extends Component {
             type="radio"
             name="tipo"
             value="peliculas"
-            onChange={this.handleRadio}
+            onChange={this.valor}
           />
           Películas
         </label>
@@ -45,7 +45,7 @@ class Buscador extends Component {
             type="radio"
             name="tipo"
             value="series"
-            onChange={this.handleRadio}
+            onChange={this.valor}
           />
           Series
         </label>

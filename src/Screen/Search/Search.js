@@ -17,6 +17,11 @@ class Search extends Component {
         let busqueda = this.props.match.params.busqueda;
         let tipo = this.props.match.params.tipo;
 
+        console.log(tipo);
+        console.log(busqueda);
+        
+        
+
         let url = "";
         if (tipo === "peliculas") {
             url = `https://api.themoviedb.org/3/search/movie?api_key=cd21534ccf3ef8b078f7ac273cdf32ca&query=${busqueda}`
@@ -38,6 +43,8 @@ class Search extends Component {
 
 
     render() {
+        console.log(this.state.resultados);
+        
         let contenido = "";
         if (this.state.resultados.length > 0) {
 
