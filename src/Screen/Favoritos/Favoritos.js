@@ -57,9 +57,6 @@ class Favoritos extends Component {
     let usuario = cookies.get('user-auth-cookie')
     return (
       <div className="container">
-        {usuario === null ? 
-          <h2>Tenes que iniciar sesion para ver favoritos</h2>
-           : 
         <React.Fragment>
         <Buscador />
 
@@ -81,7 +78,6 @@ class Favoritos extends Component {
           ) : (<h3>Cargando...</h3>)}
         </section>
         </React.Fragment>
-      }
       </div>
     )
   }

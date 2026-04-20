@@ -78,29 +78,25 @@ class DetallePelicula extends Component {
     render() {
         let usuario = cookies.get('user-auth-cookie')
         return (
-            <div>
-                {usuario === null ?
-                    <h2> Tenes que iniciar sesion para ver favoritos</h2>
-                    : this.state.info === null ? <h2>Cargando...</h2> :
-                        <section className="row">
-                            <img src={`https://image.tmdb.org/t/p/w342${this.state.info.poster_path}`} alt="foto" className="col-md-6" />
-                            <section className="col-md-6 info">
-                                <h3>{this.state.info.title}</h3>
-                                <p className="description">{this.state.info.overview}</p>
-                                <p className="mt-0 mb-0"> <b>Fecha de estreno:</b> {this.state.info.release_date}</p>
-                                <p className="mt-0 mb-0 length"><b>Duración:</b> {this.state.info.runtime}</p>
-                                <p className="mt-0"><b>Puntuación:</b> {this.state.info.vote_average}</p>
-                                <p className="mt-0 mb-0"><b>Género: </b>{this.state.info.genres[0].name}</p>
-                                {
-                                    this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()} className='btn btn-primary'>Quitar de favoritos</button>
-                                        : <button onClick={() => this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
-                                }
-                            </section>
-                        </section>
-                }
-            </div>
+            this.state.info === null ? <h2>Cargando...</h2> :
+                <section className="row">
+                    <img src={`https://image.tmdb.org/t/p/w342${this.state.info.poster_path}`} alt="foto" className="col-md-6" />
+                    <section className="col-md-6 info">
+                        <h3>{this.state.info.title}</h3>
+                        <p className="description">{this.state.info.overview}</p>
+                        <p className="mt-0 mb-0"> <b>Fecha de estreno:</b> {this.state.info.release_date}</p>
+                        <p className="mt-0 mb-0 length"><b>Duración:</b> {this.state.info.runtime}</p>
+                        <p className="mt-0"><b>Puntuación:</b> {this.state.info.vote_average}</p>
+                        <p className="mt-0 mb-0"><b>Género: </b>{this.state.info.genres[0].name}</p>
+                        {
+                            this.state.favorito ? <button onClick={() => this.quitarDeFavoritos()} className='btn btn-primary'>Quitar de favoritos</button>
+                                : <button onClick={() => this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
+                        }
+                    </section>
+                </section>
+
         )
     }
-}  
+}
 export default DetallePelicula;
 
