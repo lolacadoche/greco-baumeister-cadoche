@@ -8,8 +8,6 @@ import Series from "../../Components/Series/Series";
 
 function Home() {
 
-    // ALGO: ARRAYS CAPAS
-
     return (
         <React.Fragment>
             <div className="container">

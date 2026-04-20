@@ -7,20 +7,20 @@ class Serie extends Component {
         this.state={
             boton: "Ver más",
             claseOcultar: "hide",
-            favorito: false        }
-            }
+            favorito: false        };
+            };
 
      cambio(){
         if (this.state.boton === "Ver más"){
             this.setState({
                 boton: "Ver menos",
                 claseOcultar: "show"
-            })
+            });
         } else {
             this.setState({
                 boton: "Ver más",
                 claseOcultar: "hide"
-            })
+            });
         }
     }
     componentDidMount() {

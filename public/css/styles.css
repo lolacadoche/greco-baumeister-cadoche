@@ -98,6 +98,27 @@ nav {
     gap: 8px;
     margin-top: 10px;
 }
+.search-form label{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.search-form input[type="radio"]{
+    display: inline-block;
+    margin-right: 25px;
+}
+.logout-btn{
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.logout-btn:hover{
+    text-decoration: underline;
+}
 
 @media(min-width: 765px){
     nav {

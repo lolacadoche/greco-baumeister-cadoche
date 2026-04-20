@@ -13,19 +13,19 @@ class FormLogin extends Component {
             errorEmail: "",
             errorPassword: "",
             errorUser: ""
-        }
-    }
+        };
+    };
 
     preventSubmitEmail = (e) => {
         this.setState({
             email: e.target.value,
-        })
-    }
+        });
+    };
     preventSubmitPassword = (e) => {
         this.setState({
             password: e.target.value,
-        })
-    }
+        });
+    };
 
 
     submit = (event) => {
@@ -36,7 +36,7 @@ class FormLogin extends Component {
         if (usersEnStorage === null) {
             this.setState({
                 errorUser: "No hay usuarios registrados."
-            })
+            });
             return;
         }
 
@@ -49,7 +49,7 @@ class FormLogin extends Component {
 
         let usersConvertidos = JSON.parse(usersEnStorage);
         let usersFilatrado = usersConvertidos.filter(
-            (user) => user.email === this.state.email)
+            (user) => user.email === this.state.email);
 
 
         if (usersFilatrado.length === 0) {
@@ -57,14 +57,14 @@ class FormLogin extends Component {
                 errorUser: "El usuario ingresado no existe"
             })
             return;
-        }
+        };
 
         if (usersFilatrado[0].password !== this.state.password) {
             this.setState({
                 errorPassword: "Las credenciales ingresadas son invalidas"
             })
             return;
-        }
+        };
 
         if (usersFilatrado.length > 0 && usersFilatrado[0].password === this.state.password) {
             cookies.set("user-auth-cookie", usersFilatrado[0].email);
@@ -73,10 +73,10 @@ class FormLogin extends Component {
                 "usuarioEnSesion",
                 JSON.stringify({ sesionActiva: true }));
 
-            this.props.history.push("/")
-        }
+            this.props.history.push("/");
+        };
 
-    }
+    };
 
 
 
@@ -90,7 +90,7 @@ class FormLogin extends Component {
                             <input type="email"
                                 name="email"
                                 value={this.state.email}
-                                onChange={(event) => this.preventSubmitEmail(event)} className="form-control"/>
+                                onChange={(event) => this.preventSubmitEmail(event)} className="form-control" />
                             <p>{this.state.errorEmail}</p>
                         </div>
 
@@ -99,7 +99,7 @@ class FormLogin extends Component {
                             <input type="password"
                                 name="password"
                                 value={this.state.password}
-                                onChange={(event) => this.preventSubmitPassword(event)} className="form-control"/>
+                                onChange={(event) => this.preventSubmitPassword(event)} className="form-control" />
                             <p>{this.state.errorPassword}</p>
                             <p>{this.state.errorUser}</p>
 
@@ -111,8 +111,8 @@ class FormLogin extends Component {
                 </div>
             </div>
 
-        )
-    }
-}
+        );
+    };
+};
 
-export default withRouter(FormLogin)
+export default withRouter(FormLogin);
