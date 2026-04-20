@@ -21,6 +21,7 @@ function App() {
 
     <React.Fragment>
       <div className="container">
+        <img src="/img/movie-mates.png/" alt="Logo"/>
       <h1>MovieMates</h1>
       <Header />
       <Switch>
