@@ -32,7 +32,7 @@ function App() {
         <Route path="/Login" component={Login} />
         <Route path="/Peliculas" component={Peliculas} />
         <Route path="/Series" component={Series} />
-        <Route path="/search/:query/:tipo" component={Search} />
+        <Route path="/search/:busqueda/:tipo" component={Search} />
         <Route path="*" component={NotFound} />
       </Switch>
 
