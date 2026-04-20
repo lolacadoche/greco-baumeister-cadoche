@@ -57,9 +57,14 @@ nav {
     width: 19%;
 }
 .single-card-movie {
-    width: 24%;
+    width: 19%;
     margin: 10px;
 }
+.single-card-tv{
+    width: 19%;
+    margin: 10px
+}
+
 .single-card-playing {
     width: 15%;
 }
@@ -83,9 +88,6 @@ nav {
     overflow: hidden;
 }
 
-.all-movies .single-card-movie {
-    width: 15%;
-}
 .hide {
     display: none;
 }
@@ -111,8 +113,12 @@ nav {
     background: none;
     border: none;
 }
-
-
+.fav-boton {
+    margin-top: 10px;
+}
+.root{
+    background-color: lightblue;
+}
 
 @media(min-width: 765px){
     nav {

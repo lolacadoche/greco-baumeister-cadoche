@@ -108,7 +108,7 @@ class Serie extends Component {
                         <button className='btn btn-primary'>Ver detalle</button>
                     </Link>
                 </div>
-            {botonFav}
+                <div className="fav-boton">{botonFav}</div>
             </div>
         </article>
     )
