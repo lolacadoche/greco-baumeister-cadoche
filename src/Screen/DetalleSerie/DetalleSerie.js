@@ -71,6 +71,28 @@ class DetalleSerie extends Component {
     }
 
     render(){
+        console.log(this.props);
+        let sesion= sessionStorage.getItem("usuarioEnSesion");
+        let userLogueado =false;
+
+        if(sesion !== null){
+            let sesionParseada = JSON.parse(sesion);
+            if(sesionParseada.sesionActiva === true){
+                userLogueado = true; 
+            }
+        }
+        let botonFav= null;
+        if(userLogueado){
+            if(this.state.favorito){
+                 botonFav = (
+                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
+               } else{
+               botonFav=( <button onClick={()=>this.favoritos()} className="btn alert-info">♥️</button> )
+               }  
+            }else{
+                botonFav = null
+            }
+    
         return(
             this.state.info === null ? <h2>Cargando...</h2> :
                 <section className="row">
@@ -82,10 +104,7 @@ class DetalleSerie extends Component {
                         <p className="mt-0 mb-0 length"><b>Número de capitulo:</b> {this.state.info.number_of_episodes}</p>
                         <p className="mt-0 mb-0 length"><b>Calificación:</b> {this.state.info.vote_average}</p>
                         <p className="mt-0 mb-0 length"><b>Género:</b> {this.state.info.genres[0].name}</p>
-                        {
-                            !this.state.favorito ? <button onClick={() => this.favoritos()} className='btn btn-primary'>Agregar a favoritos</button>
-                                : <button onClick={() => this.quitarDeFavoritos()} className='btn btn-primary'>Quitar de favoritos</button>
-                        }
+                        {botonFav}
                     </section>
                 </section>
         )

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link, withRouter} from 'react-router-dom';
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 class Header extends Component {
     constructor(props){
@@ -12,7 +15,7 @@ class Header extends Component {
         }
     } 
       Logout(){
-            sessionStorage.removeItem("usuarioEnSesion");
+            cookies.remove("user-auth-cookie");
             this.setState({
                 linkRegister: <li className="nav-link"> <Link to="/Register">Register</Link> </li>,
                 linkLogin: <li className="nav-link"> <Link to="/Login">Login</Link> </li>,
@@ -23,7 +26,7 @@ class Header extends Component {
         }
 
     componentDidMount(){
-        let sesion= sessionStorage.getItem("usuarioEnSesion");
+        let sesion= cookies.get("user-auth-cookies");
         let userLogueado = false;
 
         if(sesion !== null){
