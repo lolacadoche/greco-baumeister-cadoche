@@ -118,4 +118,5 @@ class Serie extends Component {
     };
 };
 
+
 export default Serie;

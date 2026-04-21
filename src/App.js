@@ -19,6 +19,9 @@ function App() {
     <React.Fragment>
       <div className="container">
         <h1>MovieMates</h1>
+        <div className='cont-foto'>
+          <img src="/img/movie-mates.png" alt="Logo" className='foto'/>
+        </div>
         <Header />
         <Switch>
           <Route path="/" exact={true} component={Home} />
