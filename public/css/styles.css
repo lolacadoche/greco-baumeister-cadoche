@@ -136,7 +136,7 @@ nav {
 }
 
 @media (max-width: 420px) {
-    .all-movies single-card-movie {
+    .all-movies .single-card-movie {
         width: 150px;
     }
 
