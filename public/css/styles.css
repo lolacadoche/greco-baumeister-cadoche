@@ -120,6 +120,15 @@ nav {
     background-color: lightblue;
 }
 
+.foto{
+    width: 200px;
+    height: 200px;
+}
+.cont-foto{
+    display: flex;
+    justify-content: center;
+}
+
 @media(min-width: 765px){
     nav {
         grid-template-columns: 1fr;

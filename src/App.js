@@ -21,23 +21,24 @@ function App() {
 
     <React.Fragment>
       <div className="container">
-        <img src="/img/movie-mates.png/" alt="Logo"/>
-      <h1>MovieMates</h1>
-      <Header />
-      <Switch>
-        <Route path="/" exact={true} component={Home} />
-        <Route path="/DetallePelicula/id/:id" component={DetallePelicula} />
-        <Route path="/DetalleSerie/id/:id" component={DetalleSerie} />
-        <Route path="/Favoritos" component={Favoritos} />
-        <Route path="/Register" component={Register} />
-        <Route path="/Login" component={Login} />
-        <Route path="/Peliculas" component={Peliculas} />
-        <Route path="/Series" component={Series} />
-        <Route path="/search/:busqueda/:tipo" component={Search} />
-        <Route path="*" component={NotFound} />
-      </Switch>
+        <div className='cont-foto'>
+          <img src="/img/movie-mates.png" alt="Logo" className='foto'/>
+        </div>
+        <Header />
+        <Switch>
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/DetallePelicula/id/:id" component={DetallePelicula} />
+          <Route path="/DetalleSerie/id/:id" component={DetalleSerie} />
+          <Route path="/Favoritos" component={Favoritos} />
+          <Route path="/Register" component={Register} />
+          <Route path="/Login" component={Login} />
+          <Route path="/Peliculas" component={Peliculas} />
+          <Route path="/Series" component={Series} />
+          <Route path="/search/:busqueda/:tipo" component={Search} />
+          <Route path="*" component={NotFound} />
+        </Switch>
 
-      <Footer />
+        <Footer />
       </div>
     </React.Fragment>
 
