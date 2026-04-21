@@ -10,23 +10,22 @@ class Series extends Component {
             nextPage: 1,
             filtro: ""
         };
-    }
+    };
 
     evitarSubmit(event) {
         event.preventDefault();
-    }
+    };
 
     controlarCambios(event) {
         this.setState({ filtro: event.target.value }, () => this.filtrarSeries());
-    }
+    };
 
     filtrarSeries() {
         this.setState({
             series: this.state.copiaSeries.filter(serie =>
-                serie.name.toLowerCase().includes(this.state.filtro.toLowerCase())
-            )
-        })
-    }
+                serie.name.toLowerCase().includes(this.state.filtro.toLowerCase()))
+        });
+    };
 
     componentDidMount() {
         fetch('https://api.themoviedb.org/3/discover/tv?api_key=cd21534ccf3ef8b078f7ac273cdf32ca')
@@ -37,7 +36,7 @@ class Series extends Component {
                 nextPage: 2
             }))
             .catch(error => console.log(error))
-    }
+    };
 
     cargarMas = () => {
         fetch(`https://api.themoviedb.org/3/discover/tv?api_key=cd21534ccf3ef8b078f7ac273cdf32ca&page=${this.state.nextPage}`)
@@ -48,15 +47,14 @@ class Series extends Component {
                 nextPage: this.state.nextPage + 1
             }))
             .catch(err => console.log(err))
-    }
+    };
 
     borrarSerie = (id) => {
-        let filtradas = this.state.series.filter(
-            serie => serie.id !== id)
+        let filtradas = this.state.series.filter(serie => serie.id !== id);
         this.setState({
             series: filtradas
-        })
-    }
+        });
+    };
 
     render() {
         return (
@@ -96,8 +94,8 @@ class Series extends Component {
                 }
 
             </React.Fragment>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Series;

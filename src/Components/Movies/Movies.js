@@ -17,24 +17,24 @@ class Movies extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    peliculas: data.results.slice(0,4)
+                    peliculas: data.results.slice(0, 4)
                 });
             })
             .catch(error => console.log(error));
 
     };
-        
+
 
     render() {
         return (
             <div className="row">
                 <Link to="/peliculas">
-                        <button className="btn btn-primary">Ver todas</button>
+                    <button className="btn btn-primary">Ver todas</button>
                 </Link>
-                 <section className="row cards all-movies" id="movies">
-                     {this.state.peliculas ? (
+                <section className="row cards all-movies" id="movies">
+                    {this.state.peliculas ? (
                         this.state.peliculas.map((peliculas) => (
-                           <Movie key={peliculas.id} titulo={peliculas.title} name={peliculas.title} overview={peliculas.overview} image={`https://image.tmdb.org/t/p/w342${peliculas.poster_path}`}  id={peliculas.id} />
+                            <Movie key={peliculas.id} titulo={peliculas.title} name={peliculas.title} overview={peliculas.overview} image={`https://image.tmdb.org/t/p/w342${peliculas.poster_path}`} id={peliculas.id} />
                         ))
                     ) : (<h3>Cargando...</h3>)}
                 </section>

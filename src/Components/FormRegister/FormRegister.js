@@ -11,14 +11,14 @@ class FormRegister extends Component {
             errorEmail: "",
             errorPassword: "",
             errorUser: ""
-        }
-    }
+        };
+    };
 
     controlarCambios(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
-    }
+    };
 
     submit(event) {
         event.preventDefault();
@@ -27,19 +27,19 @@ class FormRegister extends Component {
             email: this.state.email,
             password: this.state.password,
             createdAt: Date.now()
-        }
+        };
 
 
         if (!this.state.email.includes("@")) {
             this.setState({
                 errorEmail: "E-mail mal formateado."
-            })
+            });
             return;
         }
         if (this.state.password.length < 6) {
             this.setState({
                 errorPassword: "La contraseña debe tener al menos 6 caracteres."
-            })
+            });
             return;
         }
 
@@ -50,7 +50,7 @@ class FormRegister extends Component {
             let usersParseado = JSON.parse(userStorage)
             let usersFiltrado = usersParseado.filter(
                 user => user.email === this.state.email
-            )
+            );
             if (usersFiltrado.length > 0) {
                 console.log("el pj es el mismo");
 
@@ -65,7 +65,7 @@ class FormRegister extends Component {
                 usersParseado.push(usuarioACrear);
                 let usersEnJson = JSON.stringify(usersParseado)
                 localStorage.setItem("users", usersEnJson);
-            }
+            };
 
         } else {
             let usersInicial = [usuarioACrear];
@@ -73,10 +73,10 @@ class FormRegister extends Component {
             localStorage.setItem("users", usersEnJson);
 
 
-        }
+        };
 
-        this.props.history.push("/login")
-    }
+        this.props.history.push("/login");
+    };
     render() {
         return (
             <div className="row justify-content-center">
@@ -99,8 +99,8 @@ class FormRegister extends Component {
                 </div>
             </div>
 
-        )
-    }
+        );
+    };
 
-}
+};
 export default withRouter(FormRegister);

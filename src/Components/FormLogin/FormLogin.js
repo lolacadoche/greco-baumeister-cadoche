@@ -38,14 +38,14 @@ class FormLogin extends Component {
                 errorUser: "No hay usuarios registrados."
             });
             return;
-        }
+        };
 
         if (!this.state.email.includes("@")) {
             this.setState({
                 errorEmail: "E-mail mal formateado."
             })
             return;
-        }
+        };
 
         let usersConvertidos = JSON.parse(usersEnStorage);
         let usersFilatrado = usersConvertidos.filter(
@@ -62,7 +62,7 @@ class FormLogin extends Component {
         if (usersFilatrado[0].password !== this.state.password) {
             this.setState({
                 errorPassword: "Las credenciales ingresadas son invalidas"
-            })
+            });
             return;
         };
 

@@ -10,23 +10,21 @@ class Peliculas extends Component {
             nextPage: 1,
             filtro: ""
         };
-    }
+    };
 
     evitarSubmit(event) {
         event.preventDefault();
-    }
+    };
 
     controlarCambios(event) {
         this.setState({ filtro: event.target.value }, () => this.filtrarPeliculas());
-    }
+    };
 
     filtrarPeliculas() {
         this.setState({
-            peliculas: this.state.copiapeliculas.filter(pelicula =>
-                pelicula.title.toLowerCase().includes(this.state.filtro.toLowerCase())
-            )
-        })
-    }
+            peliculas: this.state.copiapeliculas.filter(pelicula => pelicula.title.toLowerCase().includes(this.state.filtro.toLowerCase()))
+        });
+    };
 
     componentDidMount() {
         fetch('https://api.themoviedb.org/3/discover/movie?api_key=cd21534ccf3ef8b078f7ac273cdf32ca')
@@ -37,7 +35,7 @@ class Peliculas extends Component {
                 nextPage: 2
             }))
             .catch(error => console.log(error))
-    }
+    };
 
     cargarMas = () => {
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=cd21534ccf3ef8b078f7ac273cdf32ca&page=${this.state.nextPage}`)
@@ -48,15 +46,14 @@ class Peliculas extends Component {
                 nextPage: this.state.nextPage + 1
             }))
             .catch(err => console.log(err))
-    }
+    };
 
     borrarPelicula = (id) => {
-        let filtradas = this.state.peliculas.filter(
-            pelicula => pelicula.id !== id)
+        let filtradas = this.state.peliculas.filter(pelicula => pelicula.id !== id);
         this.setState({
             peliculas: filtradas
-        })
-    }
+        });
+    };
 
     render() {
         return (
@@ -93,11 +90,11 @@ class Peliculas extends Component {
                             Mas Peliculas
                         </button>
                     )
-                }
+                };
 
             </React.Fragment>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Peliculas;

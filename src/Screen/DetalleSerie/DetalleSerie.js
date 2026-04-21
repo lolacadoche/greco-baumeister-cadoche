@@ -10,10 +10,11 @@ class DetalleSerie extends Component {
             info: null,
             favorito: false
         };
-    }
+    };
+
     componentDidMount() {
-        let id = this.props.match.params.id
-        let serieslocalStorage = JSON.parse(localStorage.getItem("seriesfavoritas"))
+        let id = this.props.match.params.id;
+        let serieslocalStorage = JSON.parse(localStorage.getItem("seriesfavoritas"));
         let url = `https://api.themoviedb.org/3/tv/${id}?api_key=cd21534ccf3ef8b078f7ac273cdf32ca`;
 
 
@@ -32,43 +33,43 @@ class DetalleSerie extends Component {
             if (serieEntrada) {
                 this.setState({
                     favorito: true
-                })
-            }
-        }
-    }
+                });
+            };
+        };
+    };
 
     favoritos() {
-        let id = this.props.match.params.id
-        let serieslocalStorage = JSON.parse(localStorage.getItem("seriesfavoritas"))
-        let arrayasubir = []
+        let id = this.props.match.params.id;
+        let serieslocalStorage = JSON.parse(localStorage.getItem("seriesfavoritas"));
+        let arrayasubir = [];
         if (serieslocalStorage === null) {
             arrayasubir.push(id)
             localStorage.setItem("seriesfavoritas", JSON.stringify(arrayasubir))
             this.setState({
                 favorito: true
-            })
+            });
         }
         else {
             serieslocalStorage.push(id)
             localStorage.setItem("seriesfavoritas", JSON.stringify(serieslocalStorage))
             this.setState({
                 favorito: true
-            })
-        }
-    }
+            });
+        };
+    };
 
     quitarDeFavoritos() {
-        let serieslocalStorage = localStorage.getItem("seriesfavoritas")
+        let serieslocalStorage = localStorage.getItem("seriesfavoritas");
         if (serieslocalStorage !== null) {
-            let favoritasParseadas = JSON.parse(serieslocalStorage)
-            let favoritosFiltrados = favoritasParseadas.filter(id => id != this.props.id)
-            let string = JSON.stringify(favoritosFiltrados)
-            localStorage.setItem("seriesfavoritas", string)
+            let favoritasParseadas = JSON.parse(serieslocalStorage);
+            let favoritosFiltrados = favoritasParseadas.filter(id => id != this.props.id);
+            let string = JSON.stringify(favoritosFiltrados);
+            localStorage.setItem("seriesfavoritas", string);
             this.setState({
                 favorito: false
-            })
-        }
-    }
+            });
+        };
+    };
 
     render(){
         console.log(this.props);
@@ -79,18 +80,18 @@ class DetalleSerie extends Component {
             let sesionParseada = JSON.parse(sesion);
             if(sesionParseada.sesionActiva === true){
                 userLogueado = true; 
-            }
-        }
+            };
+        };
         let botonFav= null;
         if(userLogueado){
             if(this.state.favorito){
                  botonFav = (
-                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
+                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>);
                } else{
-               botonFav=( <button onClick={()=>this.favoritos()} className="btn alert-info">♥️</button> )
-               }  
+               botonFav=( <button onClick={()=>this.favoritos()} className="btn alert-info">♥️</button> );
+               };  
             }else{
-                botonFav = null
+                botonFav = null;
             }
     
         return(
@@ -107,8 +108,9 @@ class DetalleSerie extends Component {
                         {botonFav}
                     </section>
                 </section>
-        )
-    }
-}
+        );
+    };
+};
+
 export default DetalleSerie;
 

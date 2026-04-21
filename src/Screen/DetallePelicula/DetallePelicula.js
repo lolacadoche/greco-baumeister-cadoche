@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Cookies from 'universal-cookie'
 
-const cookies = new Cookies()
+const cookies = new Cookies();
 
 class DetallePelicula extends Component {
     constructor(props) {
@@ -10,10 +10,11 @@ class DetallePelicula extends Component {
             info: null,
             favorito: false
         };
-    }
+    };
+
     componentDidMount() {
-        let id = this.props.match.params.id
-        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
+        let id = this.props.match.params.id;
+        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"));
         let url = `https://api.themoviedb.org/3/movie/${id}?api_key=cd21534ccf3ef8b078f7ac273cdf32ca`;
 
 
@@ -32,15 +33,15 @@ class DetallePelicula extends Component {
             if (peliculaEntrada) {
                 this.setState({
                     favorito: true
-                })
-            }
-        }
-    }
+                });
+            };
+        };
+    };
 
     favoritos() {
-        let id = this.props.match.params.id
-        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"))
-        let arrayasubir = []
+        let id = this.props.match.params.id;
+        let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"));
+        let arrayasubir = [];
         if (peliculaslocalStorage === null) {
             arrayasubir.push(id)
             localStorage.setItem("peliculasfavoritas", JSON.stringify(arrayasubir))
@@ -53,51 +54,53 @@ class DetallePelicula extends Component {
             localStorage.setItem("peliculasfavoritas", JSON.stringify(peliculaslocalStorage))
             this.setState({
                 favorito: true
-            })
-        }
-    }
+            });
+        };
+    };
 
     quitarDeFavoritos() {
-        let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas")
+        let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas");
         if (peliculaslocalStorage !== null) {
             let favoritasParseadas = JSON.parse(peliculaslocalStorage)
             console.log(favoritasParseadas)
             console.log(this.state.info.id)
             let favoritosFiltrados = favoritasParseadas.filter(id => {
                 return id != this.state.info.id
-            })
-            console.log(favoritosFiltrados)
-            let string = JSON.stringify(favoritosFiltrados)
-            localStorage.setItem("peliculasfavoritas", string)
+            });
+            console.log(favoritosFiltrados);
+            let string = JSON.stringify(favoritosFiltrados);
+            localStorage.setItem("peliculasfavoritas", string);
             this.setState({
                 favorito: false
-            })
-        }
-    }
+            });
+        };
+    };
 
     render() {
         console.log(this.props);
-        let sesion= sessionStorage.getItem("usuarioEnSesion");
-        let userLogueado =false;
+        let sesion = sessionStorage.getItem("usuarioEnSesion");
+        let userLogueado = false;
 
-        if(sesion !== null){
+        if (sesion !== null) {
             let sesionParseada = JSON.parse(sesion);
-            if(sesionParseada.sesionActiva === true){
-                userLogueado = true; 
-            }
-        }
-        let botonFav= null;
-        if(userLogueado){
-            if(this.state.favorito){
-                 botonFav = (
-                    <button onClick={()=>this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
-               } else{
-               botonFav=( <button onClick={()=>this.favoritos()} className="btn alert-info">♥️</button> )
-               }  
-            }else{
-                botonFav = null
-            }
-        let usuario = cookies.get('user-auth-cookie')
+            if (sesionParseada.sesionActiva === true) {
+                userLogueado = true;
+            };
+        };
+        let botonFav = null;
+        if (userLogueado) {
+            if (this.state.favorito) {
+                botonFav = (
+                    <button onClick={() => this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>);
+            } else {
+                botonFav = (<button onClick={() => this.favoritos()} className="btn alert-info">♥️</button>);
+            };
+        } else {
+            botonFav = null;
+        };
+
+        let usuario = cookies.get('user-auth-cookie');
+
         return (
             this.state.info === null ? <h2>Cargando...</h2> :
                 <section className="row">
@@ -113,8 +116,9 @@ class DetallePelicula extends Component {
                     </section>
                 </section>
 
-        )
-    }
-}
+        );
+    };
+};
+
 export default DetallePelicula;
 

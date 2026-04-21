@@ -62,7 +62,7 @@ class Movie extends Component {
             let favoritasParseadas = JSON.parse(peliculaslocalStorage)
             let favoritosFiltrados = favoritasParseadas.filter(id => {
                 return id != this.props.id
-            })
+            });
             console.log(favoritosFiltrados)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("peliculasfavoritas", string)
@@ -90,7 +90,7 @@ class Movie extends Component {
                     <button onClick={() => this.quitarDeFavoritos()} className='btn btn-primary'>Sacar de favoritos</button>)
             } else {
                 botonFav = (<button onClick={() => this.favoritos()} className="btn alert-info">♥️</button>)
-            }
+            };
         } else {
             botonFav = null
         };

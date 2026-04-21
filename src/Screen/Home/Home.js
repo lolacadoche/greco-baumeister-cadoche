@@ -20,11 +20,9 @@ function Home() {
                 <h2 className="alert alert-primary">Popular series this week</h2>
                 <Series link="nowPlaying" />
 
-
-
             </div>
         </React.Fragment>
     );
-}
+};
 
 export default Home;
