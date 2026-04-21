@@ -26,10 +26,10 @@ class Header extends Component {
     };
 
     componentDidMount() {
-        let sesion = cookies.get("user-auth-cookies");
+        let sesion = cookies.get("user-auth-cookie");
         let userLogueado = false;
 
-        if (sesion !== null) {
+        if (sesion !== undefined) {
             userLogueado = true;
         };
 
