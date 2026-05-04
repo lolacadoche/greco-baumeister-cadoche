@@ -34,7 +34,6 @@ class Favoritos extends Component {
     };
 
     let localSeries = localStorage.getItem("seriesfavoritas");
-
     if (localSeries !== null) {
       let idSeries = JSON.parse(localSeries)
       let series = []

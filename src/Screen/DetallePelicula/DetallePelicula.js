@@ -62,12 +62,9 @@ class DetallePelicula extends Component {
         let peliculaslocalStorage = localStorage.getItem("peliculasfavoritas");
         if (peliculaslocalStorage !== null) {
             let favoritasParseadas = JSON.parse(peliculaslocalStorage)
-            console.log(favoritasParseadas)
-            console.log(this.state.info.id)
             let favoritosFiltrados = favoritasParseadas.filter(id => {
-                return id != this.state.info.id
-            });
-            console.log(favoritosFiltrados);
+                return id != this.state.info.id});
+
             let string = JSON.stringify(favoritosFiltrados);
             localStorage.setItem("peliculasfavoritas", string);
             this.setState({
@@ -77,7 +74,6 @@ class DetallePelicula extends Component {
     };
 
     render() {
-        console.log(this.props);
         let sesion = sessionStorage.getItem("usuarioEnSesion");
         let userLogueado = false;
 
@@ -99,7 +95,6 @@ class DetallePelicula extends Component {
             botonFav = null;
         };
 
-        let usuario = cookies.get('user-auth-cookie');
 
         return (
             this.state.info === null ? <h2>Cargando...</h2> :

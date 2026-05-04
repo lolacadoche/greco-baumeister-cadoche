@@ -48,13 +48,7 @@ class Peliculas extends Component {
             .catch(err => console.log(err))
     };
 
-    borrarPelicula = (id) => {
-        let filtradas = this.state.peliculas.filter(pelicula => pelicula.id !== id);
-        this.setState({
-            peliculas: filtradas
-        });
-    };
-
+   
     render() {
         return (
             <React.Fragment>

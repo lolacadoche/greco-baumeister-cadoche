@@ -52,16 +52,12 @@ class FormRegister extends Component {
                 user => user.email === this.state.email
             );
             if (usersFiltrado.length > 0) {
-                console.log("el pj es el mismo");
-
                 this.setState({
                     errorUser: "Ya existe un usuario con el mail ingresado."
                 })
                 return;
+                
             } else {
-                console.log(usersParseado);
-                console.log(usuarioACrear);
-
                 usersParseado.push(usuarioACrear);
                 let usersEnJson = JSON.stringify(usersParseado)
                 localStorage.setItem("users", usersEnJson);

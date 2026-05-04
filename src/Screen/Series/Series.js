@@ -49,13 +49,7 @@ class Series extends Component {
             .catch(err => console.log(err))
     };
 
-    borrarSerie = (id) => {
-        let filtradas = this.state.series.filter(serie => serie.id !== id);
-        this.setState({
-            series: filtradas
-        });
-    };
-
+ 
     render() {
         return (
             <React.Fragment>

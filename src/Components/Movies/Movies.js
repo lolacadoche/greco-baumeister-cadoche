@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Movie from "../Movie/Movie";
 import { Link } from 'react-router-dom';
 
-class Movies extends Component {
+ class Movies extends Component { 
     constructor(props) {
         super(props);
         this.state = {

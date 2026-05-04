@@ -53,7 +53,9 @@ class Search extends Component {
                     </section>
                 );
             };
-        } else {
+        } 
+        
+        else {
             contenido = (
                 <p>Lo siento. No hay resultados para tu busqueda.</p>
             );

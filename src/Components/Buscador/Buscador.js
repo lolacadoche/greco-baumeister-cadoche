@@ -37,7 +37,6 @@ class Buscador extends Component {
 
           <label> Series  <input type="radio" name="tipo" value="series" onChange={this.tipo} /></label>
         </div>
-
       </form>
     )
   }

@@ -22,6 +22,7 @@ class Movie extends Component {
             };
         };
     };
+    
     cambio() {
         if (this.state.boton === "Ver más") {
             this.setState({
@@ -63,7 +64,6 @@ class Movie extends Component {
             let favoritosFiltrados = favoritasParseadas.filter(id => {
                 return id != this.props.id
             });
-            console.log(favoritosFiltrados)
             let string = JSON.stringify(favoritosFiltrados)
             localStorage.setItem("peliculasfavoritas", string)
             this.setState({
@@ -73,7 +73,6 @@ class Movie extends Component {
     };
 
     render() {
-        console.log(this.props);
         let sesion = sessionStorage.getItem("usuarioEnSesion");
         let userLogueado = false;
 
