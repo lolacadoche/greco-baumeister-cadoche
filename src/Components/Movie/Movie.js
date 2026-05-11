@@ -36,7 +36,7 @@ class Movie extends Component {
             });
         };
     };
-
+    
     favoritos() {
         let id = this.props.id
         let peliculaslocalStorage = JSON.parse(localStorage.getItem("peliculasfavoritas"));
