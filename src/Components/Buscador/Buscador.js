@@ -1,45 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
 import { withRouter } from 'react-router-dom'
+import { useState } from "react";
 
-class Buscador extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      busqueda: "",
-      tipo: ""
-    };
-  };
+function Buscador(props){
+  const [busqueda, setBusqueda] = useState("");
+  const [tipo, setTipo] = useState("");
+      
+      
 
-  evitarSubmit(event) {
+  function evitarSubmit(event) {
     event.preventDefault();
-    this.props.history.push(`/search/${this.state.busqueda}/${this.state.tipo}`);
+    props.history.push(`/search/${this.state.busqueda}/${this.state.tipo}`);
   }
 
-  controlarCambios(event) {
-    this.setState({
-      busqueda: event.target.value
-    });
+  function controlarCambios(event) {
+      setBusqueda(event.target.value)
   };
 
   tipo = (e) => {
-    this.setState({
-      tipo: e.target.value
-    });
+      setTipo(e.target.value)
   };
-
-  render() {
     return (
-      <form onSubmit={(event) => this.evitarSubmit(event)} className="search-form">
-        <input name="searchData" type="text" placeholder="Buscar..." value={this.state.busqueda} onChange={(event) => this.controlarCambios(event)} />
+      <form onSubmit={(event) => evitarSubmit(event)} className="search-form">
+        <input name="searchData" type="text" placeholder="Buscar..." value={busqueda} onChange={(event) => controlarCambios(event)} />
         <button type="submit" className="btn btn-success btn-sm">Buscar</button>
         <div className="tipos">
-          <label>Películas <input type="radio" name="tipo" value="peliculas" onChange={this.tipo} /></label>
+          <label>Películas <input type="radio" name="tipo" value="peliculas" onChange={tipo} /></label>
 
-          <label> Series  <input type="radio" name="tipo" value="series" onChange={this.tipo} /></label>
+          <label> Series  <input type="radio" name="tipo" value="series" onChange={tipo} /></label>
         </div>
       </form>
     )
   }
-}
+
+
+  
 
 export default withRouter(Buscador);
