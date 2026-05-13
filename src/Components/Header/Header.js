@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import { Link, withRouter } from 'react-router-dom';
 import Cookies from "universal-cookie";
+import { useState, useEffect } from "react";
+
 
 const cookies = new Cookies();
 
-class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            linkFav: null,
-            linkLogin: null,
-            linkRegister: null,
-            linkLogout: null
-        }
-    }
-    Logout() {
+function Header(props) {
+    const [linkFav, setlinkFav] = useState(null);
+    const [linkLogin, setlinkLogin] = useState(null);
+    const [linkRegister, setlinkRegister] = useState(null);
+    const [linkLogout, setlinkLogout] = useState(null);
+
+  
+    function Logout(event) {
         cookies.remove("user-auth-cookie");
-        this.setState({
-            linkRegister: <li className="nav-link"> <Link to="/Register">Register</Link> </li>,
-            linkLogin: <li className="nav-link"> <Link to="/Login">Login</Link> </li>,
-            linkFav: null,
-            linkLogout: null
-        });
-        this.props.history.push("/login");
+        setlinkFav(null);
+        setlinkLogout(null);
+        setlinkLogin(<li className="nav-link"> <Link to="/Login">Login</Link> </li>);
+        setlinkRegister(<li className="nav-link"> <Link to="/Register">Register</Link> </li>);
+         this.props.history.push("/login");
     };
 
-    componentDidMount() {
+
+
+    useEffect( () => {
         let sesion = cookies.get("user-auth-cookie");
         let userLogueado = false;
 
@@ -34,38 +33,34 @@ class Header extends Component {
         };
 
         if (userLogueado) {
-            this.setState({
-                linkFav: <li className="nav-link"> <Link to="/Favoritos">Favoritas</Link> </li>,
-                linkLogout: <li className="logout-btn"> <button onClick={() => this.Logout()} className="nav-link">Logout</button> </li>,
-                linkLogin: null,
-                linkRegister: null
-            });
-        } else {
-            this.setState({
-                linkRegister: <li className="nav-link"> <Link to="/Register">Register</Link> </li>,
-                linkLogin: <li className="nav-link"> <Link to="/Login">Login</Link> </li>,
-                linkFav: null,
-                linkLogout: null
-            });
-            console.log(sessionStorage);
-        };
+                setlinkFav(<li className="nav-link"> <Link to="/Favoritos">Favoritas</Link> </li>);
+                setlinkLogout(<li className="logout-btn"> <button onClick={() => Logout()} className="nav-link">Logout</button> </li>);
+                setlinkLogin(null);
+                setlinkRegister(null)
+            }else {
+                setlinkRegister(<li className="nav-link"> <Link to="/Register">Register</Link> </li>);
+                setlinkLogin(<li className="nav-link"> <Link to="/Login">Login</Link> </li>);
+                setlinkFav(null);
+                setlinkLogout(null)
+            };
 
-    }
-    render() {
+        }, []  ) 
+         
+    
+  
         return (
             <nav>
                 <ul className="nav nav-tabs my-4">
                     <li className="nav-link"> <Link to="/">Home</Link> </li>
                     <li className="nav-link"> <Link to="/Peliculas">Peliculas</Link> </li>
                     <li className="nav-link"> <Link to="/Series">Series</Link> </li>
-                    {this.state.linkFav}
-                    {this.state.linkRegister}
-                    {this.state.linkLogin}
-                    {this.state.linkLogout}
+                    {linkFav}
+                    {linkRegister}
+                    {linkLogin}
+                    {linkLogout}
                 </ul>
             </nav>
         );
-    };
-};
+    }
 
 export default withRouter(Header);
